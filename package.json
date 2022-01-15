@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+  },
+  "name": "todo-list",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "keepwatch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laur-ns/todo-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laur-ns/todo-list/issues"
+  },
+  "homepage": "https://github.com/laur-ns/todo-list#readme",
+  "mode": "development"
+}
