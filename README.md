@@ -1,5 +1,7 @@
 # todo-list
 
+[Live Demo](https://laur-ns.github.io/todo-list/dist)
+
 ## SOLID PRINCIPLE NOTES
 
 ### Single Responsibility Principle
@@ -12,7 +14,7 @@ Open to extension but closed for modification. A well written class shouldn't ha
 
 ### Liskov Substitution Principle
 
-Derived classes must be substitutable for their base classes. E.g. methods of a subclass that overrides the methods of the superclass must have the same number of arguments. Each argument should be the same type as the superclass', and the return type should be the same also. The types of errors from the overridden methods must be the same as the methods of the superclass.
+Derived classes must be substitutable for their base classes. E.g. methods of a subclass that overrides the methods of the superclass must have the same number of arguments. Each argument should also be the same type as the superclass', and the return type should be the same also. The types of errors from the overridden methods must also be the same as the methods of the superclass.
 
 ### Interface Segregation Principle
 
