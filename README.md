@@ -26,3 +26,13 @@ Source code dependencies should refer to abstractions, not to concretions. IRL e
 
 
 Loosely coupled objects don't rely so heavily on each other that modifying one will break another. 
+
+## General notes:
+
+ul li - Looking inside - Selects all the li elements placed (anywhere) inside the ul; Descendant selector
+
+ul > li - Looking inside - Selects only the direct li elements of ul; i.e. it will only select direct children li of ul; Child Selector or Child combinator selector
+
+ul + ul - Looking outside - Selects the ul immediately following the ul; It is not looking inside, but looking outside for the immediately following element; Adjacent Sibling Selector
+
+ul ~ ul - Looking outside - Selects all the ul which follows the ul doesn't matter where it is, but both ul should be having the same parent; General Sibling Selector

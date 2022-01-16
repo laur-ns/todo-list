@@ -18,12 +18,16 @@ body {
   min-height: 100%;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #000001;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
  
 ::-webkit-scrollbar-thumb {
-  background: rgb(36, 36, 36); 
+  background: rgb(65, 65, 65); 
   border-radius: 9px;
 }
 
@@ -37,7 +41,7 @@ body {
   padding: 5px;
   overflow: hide;
   flex-direction: column;
-  background-color: rgb(15, 15, 15);
+  background-color: #0a0a0a;
 }
 
 .logo {
@@ -47,12 +51,12 @@ body {
   font-family: 'Dosis', sans-serif;
   font-size: 50px;
   color: #00E7FF;
-  cursor: pointer;
+  text-decoration: none;
 }
 
 .highlight {
   background-color: #FCF5FB;
-  color: black;
+  color: #000001;
   transition: all 0.3s
 }
 
@@ -68,10 +72,14 @@ ul {
 
 #sidebar ul {
   margin: 20px;
+  margin-bottom: 0px;
+}
+
+.border, li {
+  border-radius: 8px;
 }
 
 #sidebar li {
-  border-radius: 8px;
   display: flex;
   margin: 8px;
   padding: 8px 0 4px 12px;
@@ -83,11 +91,12 @@ ul {
 }
 
 #sidebar li:hover {
-  background-color:rgb(236, 236, 236);
+  background-color: #FCF5FB;
   color: rgb(15, 15, 15);
 }
 
-#add-project {
+li#add-project {
+  margin-top: 20px;
   color: #a0a0a0;
 }
 
@@ -101,11 +110,163 @@ li#add-project:hover {
   padding-top: 20px;
 }
 
-
-
 #main-container {
   display: flex;
   flex-flow: column nowrap;
+  padding: 20px 50px 50px 50px;
   width: 100%;
   background-color:#000001;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+#header > h1, #header h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+
+#task-list {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 60vh;
+  gap: 5px;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 5px 12px 3px 12px;
+  cursor: pointer
+}
+
+.task-container:hover {
+  background-color: #FCF5FB;
+  color: #000001;
+  transition: all 0.3s;
+}
+
+.task-container:hover .checkbox-replacement {
+  transition: all 0.3s;
+  background-color: #FCF5FB;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.checkbox-hidden {
+  display: none;
+}
+
+.checkbox-replacement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1.35em;
+  height: 1.35em;
+  margin-left: 6px;
+  margin-right: 10px;
+  border: 2px solid #bdbdbd;
+  border-radius: 5px;
+  background-color: #000001;
+}
+
+.checkbox-replacement::after {
+  color: #FCF5FB;
+  opacity: 0;
+  font-size: 24px;
+  content: '✔';
+  font-weight: 500;
+}
+
+.checkbox-hidden:checked + .checkbox-replacement {
+  background: #000001;
+  border-color: #000001;
+}
+
+.checkbox-hidden:checked + .checkbox-replacement::after {
+  opacity: 1;
+}
+
+.options-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  height: 100%;
+  cursor: pointer;
+}
+
+.options-container > * {
+  height: 23px;
+  margin: 8px;
+  transition: all 0.2s;
+}
+
+.due-date {
+  display: none;
+  padding-top: 2px;
+  align-items: center;
+  color: #555555;
+}
+
+.modify-icon {
+  display: none;
+  filter: invert(74%) sepia(46%) saturate(2961%) hue-rotate(136deg) brightness(102%) contrast(103%);
+}
+
+.trash-icon {
+  display: none;
+  filter: invert(26%) sepia(81%) saturate(6975%) hue-rotate(321deg) brightness(101%) contrast(116%);
+  height: 23px;
+}
+
+.options-container > *:hover {
+  transform: scale(1.15);
+}
+
+.task-container:hover .due-date,
+.task-container:hover .modify-icon,
+.task-container:hover .trash-icon {
+  display: flex;
+}
+
+
+#completed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 10px;
+  padding-right: 25px;
+  background-color: #0a0a0a;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+#completed:hover {
+  background-color: #1d1d1d;
+  transition: all 0.3s;
+}
+
+#completed > h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.8em;
+}
+
+#down-arrow {
+filter: invert(84%) sepia(11%) saturate(56%) hue-rotate(288deg) brightness(115%) contrast(98%);
+height: 35px;
 }

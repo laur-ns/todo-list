@@ -3,6 +3,7 @@
   <head>
     <title>Todo List</title>
     <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src='./main.js' defer></script>
     <link rel='stylesheet' href='./style.css'>
     <!-- fonts -->
@@ -14,44 +15,95 @@
 
   <body>
     <div id='sidebar'>
-      <div class='logo'>Simple Todo</div>
+      <a href='https://github.com/laur-ns/' class='logo'>Simple Todo</a>
+
       <div class='project-list'>
         <ul>
           <li class='highlight'>Main</li>
-          <li id='one'>Project1</li>
-          <li id='two'>Project2</li>
-          <li id='three'>Project3</li>
-          <!-- <li>Project4</li>
-          <li>Project5</li>
-          <li>Project6</li>
-          <li>Project7</li>
-          <li>Project8</li>
-          <li>Project9</li>
-          <li>Project10</li>
-          <li>Project11</li>
-          <li>Project12</li>
-          <li>Project13</li>
-          <li>Project15</li>
-          <li>Project16</li>
-          <li>Project17</li>
-          <li>Project18</li> -->
+          <li>Project 1</li>
+          <li>Project 2</li>
+          <li>Project 3</li>
+          <!-- <li>Project 4</li>
+          <li>Project 5</li>
+          <li>Project 6</li>
+          <li>Project 7</li>
+          <li>Project 8</li>
+          <li>Project 9</li>
+          <li>Project 10</li>
+          <li>Project 11</li>
+          <li>Project 12</li>
+          <li>Project 13</li>
+          <li>Project 15</li>
+          <li>Project 16</li>
+          <li>Project 17</li>
+          <li>Project 18</li> -->
         </ul>
       </div>
       <li id='add-project'>+ Add project</li>
+
       <div class='prio-list'>
         <ul>
           <li id='today'>Today</li>
           <li id='next-week'>Next Week</li>
       </div>
     </div>
+
+
     <div id='main-container'>
       <div id='header'>
+        <h1>Main</h1>
+        <h4>16.01.22</h4>
       </div>
+
       <div id='task-list'>
+        <div class='task-container border'>
+          <label class='checkbox' for='totallyUniqueId'>
+            <input class='checkbox-hidden' type="checkbox"
+                    name='Finish todo list' id='totallyUniqueId'>
+            <div class='checkbox-replacement'></div>
+            Finish todo list
+          </label>
+          <div class='options-container'>
+            <span class='due-date'>17/01/22</span>
+            <img src='./modify-outline.svg' class='modify-icon'>
+            <img src='./trash-outline.svg' class='trash-icon'>
+          </div>
+        </div>
+
+        <div class='task-container border'>
+          <label class='checkbox' for='totallyUniqueId2'>
+            <input class='checkbox-hidden' type="checkbox"
+                    name='Finish todo list' id='totallyUniqueId2'>
+            <div class='checkbox-replacement'></div>
+            Do statistics homework
+          </label>
+          <div class='options-container'>
+            <span class='due-date'>17/01/22</span>
+            <img src='./modify-outline.svg' class='modify-icon'>
+            <img src='./trash-outline.svg' class='trash-icon'>
+          </div>
+        </div>
       </div>
-      <div id='completed'>
+
+      <div id='completed' class='border'>
+        <h2>Completed (1)</h2>
+        <img src='./down-arrow.svg' id='down-arrow'>
       </div>
       <div id='completed-dropdown'>
+        <div class='task-container border'>
+          <label class='checkbox' for='totallyUniqueId3'>
+            <input checked class='checkbox-hidden' type="checkbox"
+                    name='Finish styling frontend' id='totallyUniqueId3'>
+            <div class='checkbox-replacement'></div>
+            <strike>Finish styling frontend</strike>
+          </label>
+          <div class='options-container'>
+            <span class='due-date'>17/01/22</span>
+            <img src='./modify-outline.svg' class='modify-icon'>
+            <img src='./trash-outline.svg' class='trash-icon'>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </body>
