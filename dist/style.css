@@ -37,9 +37,11 @@ body {
 
 #sidebar {
   display: flex;
-  width: 340px;
+  width: 240px;
+  max-width: 240px;
+  flex-shrink: 0;
   padding: 5px;
-  overflow: hide;
+  overflow: hidden;
   flex-direction: column;
   background-color: #0a0a0a;
 }
@@ -50,6 +52,7 @@ body {
   align-items: center;
   font-family: 'Dosis', sans-serif;
   font-size: 50px;
+  white-space: nowrap;
   color: #00E7FF;
   text-decoration: none;
 }
@@ -80,12 +83,13 @@ ul {
 }
 
 #sidebar li {
-  display: flex;
   margin: 8px;
   padding: 8px 0 4px 12px;
-  overflow: hidden;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -96,6 +100,7 @@ ul {
 }
 
 li#add-project {
+  list-style-type: none;
   margin-top: 20px;
   color: #a0a0a0;
 }
