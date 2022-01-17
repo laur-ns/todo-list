@@ -1,10 +1,9 @@
-import setInitListeners from "./Controllers/display-controller";
+import displayController from "./Controllers/display-controller";
 import projectList from "./Models/project-list";
 import {TaskFactory, taskList} from "./Models/task-list"
 
+// -- init -- //
+displayController.setInitListeners();
 
-//index.js will contain init, it will run the
-//listeners
 
 // some testing
-setInitListeners();

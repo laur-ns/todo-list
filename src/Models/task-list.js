@@ -1,11 +1,13 @@
 const taskList = [];
 
-const TaskFactory = (name, description, dueDate, isComplete) => {
+const TaskFactory = (obj) => {
   return {
-    name,
-    description,
-    dueDate,
-    isComplete,
+    name: obj.name,
+    description: obj.description,
+    dueDate: obj.dueDate,
+    isComplete: obj.isComplete,
+    project: obj.project,
+    id: Date.now(),
   }
 }
 

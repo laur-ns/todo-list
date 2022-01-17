@@ -1,7 +1,4 @@
 /* -- this module primarily contains event listeners -- */
-
-import { taskFactory, taskList } from '../Models/task-list';
-import { projectList } from '../Models/project-list';
 import view from '../Views/dom-manipulator';
 
 // -- make sure every task is already displayed before running this function -- //
@@ -11,7 +8,7 @@ function setInitListeners() {
   allTasks.addEventListener('click', console.log); // taskController.showAllTasks
   const allProjectElements = document.querySelectorAll('.all-tasks ~ li');
   allProjectElements.forEach((e) => {
-    e.addEventListener('click', setProjectListeners.bind(null, e));
+    e.addEventListener('click', setProjectListener.bind(null, e));
   });
   const addProject = document.getElementById('add-project');
   addProject.addEventListener('click', console.log) // use view to change display, then use projectcontroller to add
@@ -37,9 +34,13 @@ function setInitListeners() {
   let toggleDrop = false;
   completedContainer.addEventListener('click', () => {
     if (!toggleDrop) {
+      toggleDrop = true;
       // show the dropdown using view method
-    } else {
+      console.log('dropdown');
+    }
+    else {
       // hide the dropdown
+      toggleDrop = false
     }
   });
 }
@@ -47,12 +48,19 @@ function setInitListeners() {
 function setTaskListener(task) {
   // set listeners for the task passed by argument
   // the task paramater accepts an element, NOT the task itself
+  // set each element inside the container to stop propagation. use > selector to select them.
   console.log('task has been called');
 }
 
-function setProjectListeners(proj) {
+function setProjectListener(proj) {
   // set listener for project passed by argument
   console.log(proj);
 }
 
-export default setInitListeners;
+const displayController = {
+  setInitListeners,
+  setTaskListener,
+  setProjectListener,
+}
+
+export default displayController;
