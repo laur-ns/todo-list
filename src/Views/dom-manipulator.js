@@ -1,6 +1,6 @@
 import tasks from "../Controllers/task-controller";
 
-// task element that will be cloned to create new tasks
+/* task element that will be cloned to create new tasks */
 const taskTemplate = document.createElement('div');
 taskTemplate.classList.add('task-container', 'border');
 const label = document.createElement('label')
@@ -30,20 +30,19 @@ trashIcon.classList.add('trash-icon')
 trashIcon.src = './assets/trash-outline.svg';
 options.appendChild(modifyIcon);
 options.appendChild(trashIcon);
-// -- //
+//*  -- *//
 
 const showAddTaskForm = () => {
   const newTask = {
     name: prompt('enter name'),
     description: prompt('enter description'),
     dueDate: prompt('enter due date'),
-    isComplete: false,
     project: prompt('enter project'),
   }
   tasks.createTask(newTask);
 }
 
-const appendTask = (task) => {
+const appendTask = task => {
   const newTask = taskTemplate.cloneNode(true);
   newTask.setAttribute('id', `${task.id}`)
   const taskName = newTask.querySelector('p');
@@ -60,9 +59,23 @@ const hideTask = (nodeID) => {
   taskNode.remove();
 }
 
+const appendCompletedTask = task => {
+  const newTask = taskTemplate.cloneNode(true);
+  newTask.setAttribute('id', `${task.id}`)
+  const taskName = newTask.querySelector('p');
+  const strike = document.createElement('strike');
+  taskName.appendChild(strike)
+  strike.textContent = task.name;
+  const dueDate = newTask.querySelector('.due-date');
+  dueDate.textContent = task.dueDate;
+  const container = document.querySelector('#completed-dropdown');
+  container.appendChild(newTask);
+}
+
 const view = {
   showAddTaskForm,
   appendTask,
+  appendCompletedTask,
   hideTask,
 }
 

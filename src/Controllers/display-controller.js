@@ -50,6 +50,8 @@ function setTaskListener(node) {
   trash.addEventListener('click', () =>  tasks.deleteTask(taskId))
   const modify = node.querySelector('.modify-icon');
   modify.addEventListener('click', () => console.log('modifying...'));
+  const checkbox = node.querySelector('.checkbox');
+  checkbox.addEventListener('click', view.appendCompletedTask.bind(null, node))
 }
 
 function setProjectListener(proj) {
