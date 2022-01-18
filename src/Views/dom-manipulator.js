@@ -1,4 +1,4 @@
-import createTask from "../Controllers/task-controller";
+import tasks from "../Controllers/task-controller";
 
 // task element that will be cloned to create new tasks
 const taskTemplate = document.createElement('div');
@@ -12,7 +12,9 @@ label.appendChild(input);
 const replacement = document.createElement('div');
 replacement.classList.add('checkbox-replacement');
 label.appendChild(replacement)
-label.innerHTML += 'Finish todo list';
+const name = document.createElement('p');
+name.textContent = 'Finish todo list';
+label.appendChild(name);
 const options = document.createElement('div');
 options.classList.add('options-container');
 taskTemplate.appendChild(options);
@@ -30,20 +32,27 @@ options.appendChild(modifyIcon);
 options.appendChild(trashIcon);
 // -- //
 
-const showAddTaskForm = (type) => {
-  let newTask = {
-    name: 'laurens',
-    description: 'description',
-    dueDate: 'dueDate',
-    isComplete: 'isComplete',
-    project: 'todo-list',
+const showAddTaskForm = () => {
+  const newTask = {
+    name: prompt('enter name'),
+    description: prompt('enter description'),
+    dueDate: prompt('enter due date'),
+    isComplete: false,
+    project: prompt('enter project'),
   }
-  createTask(newTask);
+  tasks.createTask(newTask);
 }
 
 const appendTask = (task) => {
+  const newTask = taskTemplate.cloneNode(true);
+  newTask.setAttribute('id', `${task.id}`)
+  const taskName = newTask.querySelector('p');
+  taskName.textContent = task.name;
+  const dueDate = newTask.querySelector('.due-date');
+  dueDate.textContent = task.dueDate;
   const container = document.querySelector('#task-list');
-  container.insertBefore(taskTemplate.cloneNode(true), container.firstChild);
+  const addTask = document.getElementById('add-task');
+  container.insertBefore(newTask, addTask);
 }
 
 const view = {

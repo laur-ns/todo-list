@@ -1,7 +1,8 @@
 /* -- this module primarily contains event listeners -- */
 import view from '../Views/dom-manipulator';
+import tasks from './task-controller';
 
-// -- make sure every task is already displayed before running this function -- //
+// ensure every task is already displayed before running this
 function setInitListeners() {
   // sidebar
   const allTasks = document.querySelector('.all-tasks');
@@ -23,9 +24,7 @@ function setInitListeners() {
 
   // task list
   const tasks = document.querySelectorAll('#task-list > *:not(#add-task)');
-  tasks.forEach((e) => {
-    e.addEventListener('click', setTaskListener.bind(null, e));
-  });
+  tasks.forEach((e) => setTaskListener(e));
   const addTask = document.getElementById('add-task');
   addTask.addEventListener('click', view.showAddTaskForm);
   
@@ -45,11 +44,12 @@ function setInitListeners() {
   });
 }
 
-function setTaskListener(task) {
-  // set listeners for the task passed by argument
-  // the task paramater accepts an element, NOT the task itself
-  // set each element inside the container to stop propagation. use > selector to select them.
-  console.log('task has been called');
+function setTaskListener(node) {
+  const taskId = parseInt(node.getAttribute('id'));
+  const trash = node.querySelector('.trash-icon');
+  trash.addEventListener('click', () =>  tasks.deleteTask(taskId))
+  const modify = node.querySelector('.modify-icon');
+  modify.addEventListener('click', () => console.log('modifying...'));
 }
 
 function setProjectListener(proj) {
