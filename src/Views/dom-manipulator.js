@@ -1,3 +1,4 @@
+import displayController from "../Controllers/display-controller";
 import tasks from "../Controllers/task-controller";
 
 /* task element that will be cloned to create new tasks */
@@ -53,6 +54,7 @@ const appendTask = task => {
   taskName.textContent = task.name;
   dueDate.textContent = task.dueDate;
   container.insertBefore(newTask, addTask);
+  displayController.setTaskListener(newTask);
 }
 
 const hideTask = nodeID => {
@@ -74,6 +76,7 @@ const appendCompletedTask = task => {
   dueDate.textContent = task.dueDate;
   container.appendChild(newTask);
   checkbox.checked = true;
+  displayController.setTaskListener(newTask)
 }
 
 function updateCompletedCount(count) {

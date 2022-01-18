@@ -1,4 +1,5 @@
 import projects from "../Models/project-list";
+import view from "../Views/dom-manipulator";
 
 function showProjects() {
   const projectsToClear = document.querySelectorAll('.all-tasks ~ li');

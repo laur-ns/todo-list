@@ -2,8 +2,6 @@
 import { taskList } from '../Models/task-list';
 import view from '../Views/dom-manipulator';
 import tasks from './task-controller';
-import projects from '../Models/project-list';
-
 
 function setInitListeners() {
   // sidebar
@@ -25,8 +23,6 @@ function setInitListeners() {
   });
 
   // task list
-  const tasks = document.querySelectorAll('#task-list > *:not(#add-task), #completed-dropdown > *');
-  tasks.forEach((e) => setTaskListener(e));
   const addTask = document.getElementById('add-task');
   addTask.addEventListener('click', view.showAddTaskForm);
   
@@ -48,13 +44,15 @@ function setInitListeners() {
 
 function setTaskListener(node) {
   const id = parseInt(node.getAttribute('id'));
-  const index = tasks.getIndexbyId(id)
   const trash = node.querySelector('.trash-icon');
-  trash.addEventListener('click', () =>  tasks.remove(id))
+  trash.addEventListener('click', () => {
+    tasks.remove(id);
+  });
   const modify = node.querySelector('.modify-icon');
   modify.addEventListener('click', () => console.log('modifying...'));
   const checkbox = node.querySelector('input');
-  checkbox.addEventListener('click', () => {
+  checkbox.addEventListener('click', (e) => {
+    let index = tasks.getIndexbyId(id);
     if (!taskList[index].isComplete) {
       view.hideTask(id);
       view.appendCompletedTask(taskList[index]);
@@ -65,8 +63,6 @@ function setTaskListener(node) {
       view.appendTask(taskList[index])
       taskList[index].isComplete = false;
     }
-    const newTask = document.getElementById(id);
-    setTaskListener(newTask);
     view.updateCompletedCount(tasks.getCompletedNumber());
   })
 }
@@ -80,7 +76,6 @@ const displayController = {
   setInitListeners,
   setTaskListener,
   setProjectListener,
-  showProjects,
 }
 
 export default displayController;
