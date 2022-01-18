@@ -55,9 +55,15 @@ const appendTask = (task) => {
   container.insertBefore(newTask, addTask);
 }
 
+const hideTask = (nodeID) => {
+  const taskNode = document.getElementById(nodeID);
+  taskNode.remove();
+}
+
 const view = {
   showAddTaskForm,
-  appendTask
+  appendTask,
+  hideTask,
 }
 
 export default view;

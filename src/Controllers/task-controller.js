@@ -10,9 +10,10 @@ function createTask(obj) {
 }
 
 function deleteTask(id) {
-  // scans array for Id, and deletes it
-  const task = taskList.find(e => e.id === id)
-  console.log(`deleting ${task.name}`)
+  // scans array for Id, calls view to hide it, then deletes it
+  const index = taskList.findIndex(e => e.id === id);
+  view.hideTask(id);
+  taskList.splice(index, 1);
 }
 
 const tasks = {
