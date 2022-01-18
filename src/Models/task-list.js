@@ -17,4 +17,4 @@ const getCompletedTasks = () => {
   return completedTasks;
 }
 
-export {taskList, TaskFactory};
+export {taskList, TaskFactory, getCompletedTasks};

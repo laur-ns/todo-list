@@ -1,4 +1,5 @@
 /* -- this module primarily contains event listeners -- */
+import { taskList } from '../Models/task-list';
 import view from '../Views/dom-manipulator';
 import tasks from './task-controller';
 
@@ -39,19 +40,33 @@ function setInitListeners() {
     }
     else {
       // hide the dropdown
-      toggleDrop = false
+      toggleDrop = false;
     }
   });
 }
 
 function setTaskListener(node) {
-  const taskId = parseInt(node.getAttribute('id'));
+  const id = parseInt(node.getAttribute('id'));
+  const index = tasks.getIndexbyId(id)
   const trash = node.querySelector('.trash-icon');
-  trash.addEventListener('click', () =>  tasks.deleteTask(taskId))
+  trash.addEventListener('click', () =>  tasks.remove(id))
   const modify = node.querySelector('.modify-icon');
   modify.addEventListener('click', () => console.log('modifying...'));
-  const checkbox = node.querySelector('.checkbox');
-  checkbox.addEventListener('click', view.appendCompletedTask.bind(null, node))
+  const checkbox = node.querySelector('input');
+  checkbox.addEventListener('click', () => {
+    if (!taskList[index].isComplete) {
+      view.hideTask(id);
+      view.appendCompletedTask(taskList[index]);
+      taskList[index].isComplete = true;
+    }
+    else {
+      view.hideTask(id);
+      view.appendTask(taskList[index])
+      taskList[index].isComplete = false;
+    }
+    const newTask = document.getElementById(id);
+    setTaskListener(newTask);
+  })
 }
 
 function setProjectListener(proj) {

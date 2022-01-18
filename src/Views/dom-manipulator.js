@@ -39,37 +39,40 @@ const showAddTaskForm = () => {
     dueDate: prompt('enter due date'),
     project: prompt('enter project'),
   }
-  tasks.createTask(newTask);
+  tasks.create(newTask);
 }
 
 const appendTask = task => {
   const newTask = taskTemplate.cloneNode(true);
-  newTask.setAttribute('id', `${task.id}`)
   const taskName = newTask.querySelector('p');
-  taskName.textContent = task.name;
   const dueDate = newTask.querySelector('.due-date');
-  dueDate.textContent = task.dueDate;
   const container = document.querySelector('#task-list');
   const addTask = document.getElementById('add-task');
+  newTask.setAttribute('id', `${task.id}`)
+  taskName.textContent = task.name;
+  dueDate.textContent = task.dueDate;
   container.insertBefore(newTask, addTask);
 }
 
-const hideTask = (nodeID) => {
+const hideTask = nodeID => {
   const taskNode = document.getElementById(nodeID);
   taskNode.remove();
 }
 
 const appendCompletedTask = task => {
   const newTask = taskTemplate.cloneNode(true);
-  newTask.setAttribute('id', `${task.id}`)
   const taskName = newTask.querySelector('p');
   const strike = document.createElement('strike');
-  taskName.appendChild(strike)
-  strike.textContent = task.name;
   const dueDate = newTask.querySelector('.due-date');
-  dueDate.textContent = task.dueDate;
   const container = document.querySelector('#completed-dropdown');
+  const checkbox = newTask.querySelector('input');
+  newTask.setAttribute('id', `${task.id}`)
+  taskName.textContent = '';
+  strike.textContent = task.name;
+  taskName.appendChild(strike)
+  dueDate.textContent = task.dueDate;
   container.appendChild(newTask);
+  checkbox.checked = true;
 }
 
 const view = {
