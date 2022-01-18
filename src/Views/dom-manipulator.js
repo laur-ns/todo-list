@@ -81,10 +81,17 @@ function updateCompletedCount(count) {
   element.textContent = `Completed (${count})`
 }
 
-function appendProject(projectName) {
+function appendProject(projectName, highlight) {
   const projectList = document.querySelector('.project-list > ul');
+  const allTasks = document.querySelector('.all-tasks');
   const project = document.createElement('li');
   project.textContent = projectName;
+  if (highlight === undefined) {
+    allTasks.classList.add('highlight');
+  }
+  if (projectName === highlight) {
+    project.classList.add('highlight');
+  }
   projectList.appendChild(project);
 }
 

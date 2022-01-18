@@ -4,5 +4,5 @@ import view from './Views/dom-manipulator';
 
 // -- init -- //
 tasks.showAllTasks();
-displayController.showAllProjects();
+displayController.showProjects();
 displayController.setInitListeners();
