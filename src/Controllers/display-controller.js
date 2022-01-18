@@ -2,7 +2,7 @@
 import { taskList } from '../Models/task-list';
 import view from '../Views/dom-manipulator';
 import tasks from './task-controller';
-import projectList from '../Models/project-list';
+import projects from '../Models/project-list';
 
 
 function setInitListeners() {
@@ -76,8 +76,8 @@ function showAllProjects() {
   projectsToClear.forEach(e => {
     e.remove();
   });
-  for(let i = 0; i < projectList.length; i++) {
-    view.appendProject(taskList[i].name);
+  for(let i = 0; i < projects.projectList.length; i++) {
+    view.appendProject(projects.projectList[i]);
   }
 }
 

@@ -81,8 +81,11 @@ function updateCompletedCount(count) {
   element.textContent = `Completed (${count})`
 }
 
-function appendProject(name) {
-  console.log(name);
+function appendProject(projectName) {
+  const projectList = document.querySelector('.project-list > ul');
+  const project = document.createElement('li');
+  project.textContent = projectName;
+  projectList.appendChild(project);
 }
 
 const view = {

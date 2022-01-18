@@ -3,7 +3,7 @@ const taskList = [];
 taskList[0] = {
   name: 'finish back end',
   isComplete: false,
-  project: 'code',
+  project: 'asdfasdf',
   id: 123412342,
   priority: 'medium',
 }

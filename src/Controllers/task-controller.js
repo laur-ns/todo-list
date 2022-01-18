@@ -1,6 +1,7 @@
 import { TaskFactory, taskList } from "../Models/task-list";
 import view from "../Views/dom-manipulator";
 import displayController from "./display-controller";
+import projects from "../Models/project-list";
 
 function create(obj) {
   let index = (taskList.push(TaskFactory(obj))) - 1;
@@ -20,15 +21,16 @@ function getIndexbyId(id) {
   return index;
 }
 
-function getCompletedNumber(project) {
+function getCompletedNumber() {
   let numCompleted = 0
-  if (project === undefined) {
+  const currentProject = projects.getCurrentProject();
+  if (currentProject === undefined) {
     taskList.forEach(a => {
       if (a.isComplete) { numCompleted++ }
     });
   }
   taskList.forEach(a => {
-    if (a.isComplete && a.project === project) { numCompleted++ }
+    if (a.isComplete && a.project === currentProject) { numCompleted++ }
   });
   return numCompleted;
 }
@@ -45,12 +47,12 @@ function showAllTasks(project) {
   }
   allTasks.forEach(a => {
     if (a.isComplete) {
-      view.appendCompletedTask(a)
+      view.appendCompletedTask(a);
       return;
     }
     view.appendTask(a);
   });
-  const completedCount = getCompletedNumber(project);
+  const completedCount = getCompletedNumber();
   view.updateCompletedCount(completedCount);
 }
 
