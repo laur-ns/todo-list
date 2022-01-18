@@ -10,7 +10,13 @@ function getCurrentProject() {
 }
 
 function setCurrentProject(projectName) {
-
+  projectList.forEach(e => {
+    if (projectName === e) {
+      alert('cannot make a new project of the same name!');
+      return;
+    }
+  });
+  currentProject = projectName;
 }
 
 let projects = {

@@ -71,17 +71,6 @@ function setTaskListener(node) {
   })
 }
 
-function showProjects() {
-  const projectsToClear = document.querySelectorAll('.all-tasks ~ li');
-  projectsToClear.forEach(e => {
-    e.remove();
-  });
-  const highlight = projects.getCurrentProject();
-  for(let i = 0; i < projects.projectList.length; i++) {
-    view.appendProject(projects.projectList[i], highlight);
-  }
-}
-
 function setProjectListener(proj) {
   // set listener for project passed by argument
   console.log(proj);

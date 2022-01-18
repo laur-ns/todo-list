@@ -1,8 +1,8 @@
 import displayController from './Controllers/display-controller';
+import projectController from './Controllers/project-controller';
 import tasks from './Controllers/task-controller';
-import view from './Views/dom-manipulator';
 
 // -- init -- //
 tasks.showAllTasks();
-displayController.showProjects();
+projectController.showProjects();
 displayController.setInitListeners();
