@@ -38,6 +38,7 @@ const showAddTaskForm = () => {
     description: prompt('enter description'),
     dueDate: prompt('enter due date'),
     project: prompt('enter project'),
+    priority: 'high',
   }
   tasks.create(newTask);
 }
@@ -75,11 +76,22 @@ const appendCompletedTask = task => {
   checkbox.checked = true;
 }
 
+function updateCompletedCount(count) {
+  const element = document.querySelector('#completed > h2');
+  element.textContent = `Completed (${count})`
+}
+
+function appendProject(name) {
+  console.log(name);
+}
+
 const view = {
   showAddTaskForm,
   appendTask,
   appendCompletedTask,
   hideTask,
+  updateCompletedCount,
+  appendProject,
 }
 
 export default view;

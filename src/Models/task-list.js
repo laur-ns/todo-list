@@ -1,5 +1,20 @@
 const taskList = [];
 
+taskList[0] = {
+  name: 'finish back end',
+  isComplete: false,
+  project: 'code',
+  id: 123412342,
+  priority: 'medium',
+}
+taskList[1] = {
+  name: 'finish front end',
+  isComplete: true,
+  project: 'study',
+  id: 1345325435,
+  priority: 'high',
+}
+
 const TaskFactory = (obj) => {
   return {
     name: obj.name,
@@ -8,13 +23,8 @@ const TaskFactory = (obj) => {
     isComplete: false,
     project: obj.project,
     id: Date.now(),
+    priority: obj.priority,
   }
 }
 
-const getCompletedTasks = () => {
-  const completedTasks = [];
-  completedTasks.push(taskList.findIndex(e => e.isComplete === true));
-  return completedTasks;
-}
-
-export {taskList, TaskFactory, getCompletedTasks};
+export {taskList, TaskFactory};

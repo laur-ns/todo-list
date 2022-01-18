@@ -2,8 +2,9 @@
 import { taskList } from '../Models/task-list';
 import view from '../Views/dom-manipulator';
 import tasks from './task-controller';
+import projectList from '../Models/project-list';
 
-// ensure every task is already displayed before running this
+
 function setInitListeners() {
   // sidebar
   const allTasks = document.querySelector('.all-tasks');
@@ -24,7 +25,7 @@ function setInitListeners() {
   });
 
   // task list
-  const tasks = document.querySelectorAll('#task-list > *:not(#add-task)');
+  const tasks = document.querySelectorAll('#task-list > *:not(#add-task), #completed-dropdown > *');
   tasks.forEach((e) => setTaskListener(e));
   const addTask = document.getElementById('add-task');
   addTask.addEventListener('click', view.showAddTaskForm);
@@ -66,7 +67,18 @@ function setTaskListener(node) {
     }
     const newTask = document.getElementById(id);
     setTaskListener(newTask);
+    view.updateCompletedCount(tasks.getCompletedNumber());
   })
+}
+
+function showAllProjects() {
+  const projectsToClear = document.querySelectorAll('.all-tasks ~ li');
+  projectsToClear.forEach(e => {
+    e.remove();
+  });
+  for(let i = 0; i < projectList.length; i++) {
+    view.appendProject(taskList[i].name);
+  }
 }
 
 function setProjectListener(proj) {
@@ -78,6 +90,7 @@ const displayController = {
   setInitListeners,
   setTaskListener,
   setProjectListener,
+  showAllProjects,
 }
 
 export default displayController;
