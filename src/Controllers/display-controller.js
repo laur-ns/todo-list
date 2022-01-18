@@ -1,6 +1,7 @@
 /* -- this module primarily contains event listeners -- */
 import { taskList } from '../Models/task-list';
 import view from '../Views/dom-manipulator';
+import projectController from './project-controller';
 import tasks from './task-controller';
 
 function setInitListeners() {
@@ -12,7 +13,9 @@ function setInitListeners() {
     e.addEventListener('click', setProjectListener.bind(null, e));
   });
   const addProject = document.getElementById('add-project');
-  addProject.addEventListener('click', console.log) // use view to change display, then use projectcontroller to add
+  addProject.addEventListener('click', () => {
+    view.showAddProjectInput();
+  })
   const today = document.getElementById('today');
   const nextWeek = document.getElementById('next-week');
   today.addEventListener('click', () => {

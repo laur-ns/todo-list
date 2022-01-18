@@ -1,4 +1,5 @@
 import displayController from "../Controllers/display-controller";
+import projectController from "../Controllers/project-controller";
 import tasks from "../Controllers/task-controller";
 
 /* task element that will be cloned to create new tasks */
@@ -42,6 +43,11 @@ const showAddTaskForm = () => {
     priority: 'high',
   }
   tasks.create(newTask);
+}
+
+const showAddProjectInput = () => {
+  projectController.createProject(prompt('Insert project name'));
+  projectController.showProjects();
 }
 
 const appendTask = task => {
@@ -100,6 +106,7 @@ function appendProject(projectName, highlight) {
 
 const view = {
   showAddTaskForm,
+  showAddProjectInput,
   appendTask,
   appendCompletedTask,
   hideTask,

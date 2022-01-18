@@ -13,10 +13,6 @@ function remove(id) {
   view.hideTask(id);
   taskList.splice(index, 1);
   view.updateCompletedCount(tasks.getCompletedNumber());
-  // const updatedTasks = document.querySelectorAll('#task-list > *:not(#add-task), #completed-dropdown > *');
-  // updatedTasks.forEach((e) => {
-  //   displayController.setTaskListener(e);
-  // });
 }
 
 function getIndexbyId(id) {

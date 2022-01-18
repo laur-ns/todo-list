@@ -12,8 +12,13 @@ function showProjects() {
   }
 }
 
+function createProject(name) {
+  projects.projectList.push(name);
+}
+
 const projectController = {
   showProjects,
+  createProject
 }
 
 export default projectController;
