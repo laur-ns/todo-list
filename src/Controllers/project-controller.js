@@ -4,13 +4,16 @@ import projectView from '../Views/project-view';
 let currentProject = undefined;
 
 function createProject(pName) {
+  let sameProject = false;
   projectList.forEach(p => {
-    if (pName === p.name) {
-      alert('cannot make a new project of the same name!');
-      return;
+    if (pName == p.name) {
+      alert(`${pName} already exists!`);
+      sameProject = true;
     }
   });
-  projectList.push({ pName, tasks: [] });
+  if (sameProject) { return; }
+  projectList.push({ name: pName, tasks: [] });
+  projectView.renderProject(pName);
   return pName;
 }
 
@@ -47,10 +50,10 @@ function removeTask(id, pName) {
 }
 
 function showAllProjects() {
-  const highlight = getCurrentProject();
   for(let i = 0; i < projectList.length; i++) {
-    projectView.renderProject(projectList[i].name, highlight);
+    projectView.renderProject(projectList[i].name);
   }
+  projectView.setHighlight(undefined);
 }
 
 // -- private functions -- //

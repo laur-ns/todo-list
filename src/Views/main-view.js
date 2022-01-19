@@ -1,4 +1,5 @@
 import mainController from "../Controllers/main-controller";
+import projectController from "../Controllers/project-controller";
 import taskController from "../Controllers/task-controller";
 import projectView from "./project-view";
 import taskView from "./task-view";
@@ -11,13 +12,13 @@ function renderCompleteCount(count) {
 function setStaticListeners() {
   // sidebar
   const allTasks = document.querySelector('.all-tasks');
-  const allProjectElements = document.querySelectorAll('.all-tasks ~ li');
   const addProject = document.getElementById('add-project');
   const today = document.getElementById('today');
   const nextWeek = document.getElementById('next-week');
-  allTasks.addEventListener('click', taskController.showAllTasks); // taskController.showAllTasks
-  allProjectElements.forEach((e) => {
-    e.addEventListener('click', projectView.setListener.bind(null, e));
+  allTasks.addEventListener('click', () => {
+    projectController.setCurrentProject(undefined);
+    projectView.setHighlight(allTasks);
+    mainController.showAllTasks(undefined)
   });
   addProject.addEventListener('click', () => {
     projectView.renderAddForm();

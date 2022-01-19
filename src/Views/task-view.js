@@ -77,6 +77,16 @@ function hideTask(id) {
   taskNode.remove();
 }
 
+function hideAllTasks() {
+  const incompletes = document.querySelectorAll('#task-list > *:not(#add-task)');
+  const completes = document.getElementById('completed-dropdown');
+  completes.innerHTML = '';
+  incompletes.forEach(e => {
+    const id = e.getAttribute('id');
+    hideTask(id);
+  });
+}
+
 function renderEditForm() {
 }
 
@@ -95,6 +105,7 @@ const taskView = {
   setListeners,
   renderTask,
   hideTask,
+  hideAllTasks,
   renderEditForm,
   renderAddForm,
 }

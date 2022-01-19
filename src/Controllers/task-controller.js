@@ -46,29 +46,11 @@ function toggleComplete(id) {
   mainView.renderCompleteCount(getCompletedCount());
 }
 
-function showAllTasks(project) {
-  let tasksToRender = [];
-  if (project === undefined) { // if no project specified, display all
-    tasksToRender = taskList;
-  }
-  else { // find tasks in project
-    taskList.forEach(a => {
-      if (a.project === project) { tasksToRender.push(a) }
-    });
-  }
-  tasksToRender.forEach(a => {
-    taskView.renderTask(a);
-  });
-  const count = getCompletedCount();
-  mainView.renderCompleteCount(count);
-}
-
 const taskController = {
   create,
   remove,
   getIndexbyId,
   toggleComplete,
-  showAllTasks,
   getCompletedCount,
 }
 
