@@ -4,14 +4,18 @@ import projectView from '../Views/project-view';
 let currentProject = undefined;
 
 function createProject(pName) {
-  let sameProject = false;
+  let badProjectName = false;
+  if (pName === '') {
+    alert('Please insert a name for your project!');
+    badProjectName = true;
+  }
   projectList.forEach(p => {
     if (pName == p.name) {
       alert(`${pName} already exists!`);
-      sameProject = true;
+      badProjectName = true;
     }
   });
-  if (sameProject) { return; }
+  if (badProjectName) { return; }
   projectList.push({ name: pName, tasks: [] });
   projectView.renderProject(pName);
   return pName;
