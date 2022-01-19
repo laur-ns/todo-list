@@ -1,8 +1,8 @@
-import displayController from './Controllers/display-controller';
 import projectController from './Controllers/project-controller';
-import tasks from './Controllers/task-controller';
+import taskController from './Controllers/task-controller';
+import mainView from './Views/main-view';
 
 // -- init -- //
-tasks.showAllTasks();
-projectController.showProjects();
-displayController.setInitListeners();
+taskController.showAllTasks();
+projectController.showAllProjects();
+mainView.setStaticListeners();

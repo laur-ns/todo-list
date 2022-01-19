@@ -1,18 +1,18 @@
-import { TaskFactory, taskList } from "../Models/task-list";
-import view from "../Views/dom-manipulator";
-import displayController from "./display-controller";
-import projects from "../Models/project-list";
+import {taskList, TaskFactory} from "../Models/task-model";
+import projectController from "./project-controller";
+import taskView from "../Views/task-view";
+import mainView from "../Views/main-view";
 
 function create(obj) {
   let index = (taskList.push(TaskFactory(obj))) - 1;
-  view.appendTask(taskList[index])
+  taskView.renderTask(taskList[index])
 }
 
 function remove(id) {
   const index = getIndexbyId(id);
-  view.hideTask(id);
+  taskView.hideTask(id);
   taskList.splice(index, 1);
-  view.updateCompletedCount(tasks.getCompletedNumber());
+  mainView.renderCompleteCount(getCompletedCount());
 }
 
 function getIndexbyId(id) {
@@ -20,9 +20,9 @@ function getIndexbyId(id) {
   return index;
 }
 
-function getCompletedNumber() {
+function getCompletedCount() {
   let numCompleted = 0
-  const currentProject = projects.getCurrentProject();
+  const currentProject = projectController.getCurrentProject();
   if (currentProject === undefined) {
     taskList.forEach(a => {
       if (a.isComplete) { numCompleted++ }
@@ -34,33 +34,42 @@ function getCompletedNumber() {
   return numCompleted;
 }
 
-function showAllTasks(project) {
-  let allTasks = [];
-  if (project === undefined) { // if no project specified, display all
-    allTasks = taskList;
+function toggleComplete(id) {
+  let index = getIndexbyId(id);
+  if (!taskList[index].isComplete) {
+    taskList[index].isComplete = true;
+  } else {
+    taskList[index].isComplete = false;
   }
-  else { // find tasks for each project
-    taskList.forEach(a => {
-      if (a.project === project) { allTasks.push(a) }
-    });
-  }
-  allTasks.forEach(a => {
-    if (a.isComplete) {
-      view.appendCompletedTask(a);
-      return;
-    }
-    view.appendTask(a);
-  });
-  const completedCount = getCompletedNumber();
-  view.updateCompletedCount(completedCount);
+  taskView.hideTask(id);
+  taskView.renderTask(taskList[index])
+  mainView.renderCompleteCount(getCompletedCount());
 }
 
-const tasks = {
+function showAllTasks(project) {
+  let tasksToRender = [];
+  if (project === undefined) { // if no project specified, display all
+    tasksToRender = taskList;
+  }
+  else { // find tasks in project
+    taskList.forEach(a => {
+      if (a.project === project) { tasksToRender.push(a) }
+    });
+  }
+  tasksToRender.forEach(a => {
+    taskView.renderTask(a);
+  });
+  const count = getCompletedCount();
+  mainView.renderCompleteCount(count);
+}
+
+const taskController = {
   create,
   remove,
   getIndexbyId,
+  toggleComplete,
   showAllTasks,
-  getCompletedNumber,
+  getCompletedCount,
 }
 
-export default tasks;
+export default taskController;
