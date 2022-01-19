@@ -1,3 +1,5 @@
+import mainController from "../Controllers/main-controller";
+import projectController from "../Controllers/project-controller";
 import taskController from "../Controllers/task-controller";
 
 /* task element that will be cloned to create new tasks */
@@ -99,6 +101,8 @@ function renderAddForm() {
     priority: 'high',
   }
   taskController.create(newTaskObj);
+  const project = projectController.getCurrentProject;
+  mainController.showAllTasks(project);
 }
 
 const taskView = {

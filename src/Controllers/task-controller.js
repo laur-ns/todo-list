@@ -2,11 +2,11 @@ import {taskList, TaskFactory} from "../Models/task-model";
 import projectController from "./project-controller";
 import taskView from "../Views/task-view";
 import mainView from "../Views/main-view";
+import mainController from "./main-controller";
 
 function create(obj) {
   let index = (taskList.push(TaskFactory(obj))) - 1;
   projectController.addTask(index, taskList[index].project);
-  taskView.renderTask(taskList[index])
 }
 
 function remove(id) {
