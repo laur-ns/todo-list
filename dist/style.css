@@ -330,7 +330,7 @@ li#add-project:hover {
 }
 
 .blur {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -343,14 +343,13 @@ li#add-project:hover {
 
 :root {
   --main: #70a011;
-  --dark: #70a011;
   --hover: #b2ff194b;
   --border: #b2ff1934;
   --bright: #a9fa06;
 }
 /* modals */
 .modal-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 90%;
   height: 500px;
@@ -437,7 +436,7 @@ li#add-project:hover {
   background-color: rgb(10, 10, 10);
   cursor: text;
   transition: 0.08s ease-in;
-  color: var(--dark);
+  color: var(--main);
 }
 
 textarea {
@@ -499,7 +498,7 @@ textarea {
 
 #select-prio {
   height: 2.8rem;
-  padding-left: 1rem;
+  padding-left: 0.2rem;
   background: rgb(10, 10, 10);
   border: 2px solid var(--border);
   color: var(--main);
@@ -514,7 +513,17 @@ textarea {
   border-color: var(--hover);
 }
 
+.pickers > span {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: left;
+  margin: 0rem -0.6rem 0 0rem;
+  color: var(--main);
+}
+
 .submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-shrink: 0;
   height: 3.7rem;
   background: rgba(255, 255, 255, 0.904);
@@ -534,4 +543,12 @@ textarea {
 
 .submit:active {
   border-bottom: none;
+}
+
+#submit-edit {
+  display: none;
+}
+
+#submit-add {
+  display: none;
 }

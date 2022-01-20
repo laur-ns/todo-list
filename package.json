@@ -22,5 +22,8 @@
     "url": "https://github.com/laur-ns/todo-list/issues"
   },
   "homepage": "https://github.com/laur-ns/todo-list#readme",
-  "mode": "development"
+  "mode": "development",
+  "dependencies": {
+    "date-fns": "^2.28.0"
+  }
 }

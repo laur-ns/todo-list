@@ -43,7 +43,7 @@
       <div class='prio-list'>
         <ul>
           <li id='today'>Today</li>
-          <li id='next-week'>Next Week</li>
+          <li id='this-week'>This Week</li>
       </div>
     </div>
 
@@ -70,27 +70,30 @@
     </div>
     <!-- all modals here -->
     <div class='blur'>
-      <div class='modal-container' id='green-form'>
+      <div class='modal-container'>
         <div id='form-header'>
           <div id='header-title'>add task</div>
-          <button class='close'>×</button>
+          <button type='button' class='close'>×</button>
         </div>
-        <input class='form-text' type='text' autocomplete='off' autocapitalize='on' id='name' placeholder=' '>
+        <input class='form-text' type='text' autocomplete='off'
+          id='name' placeholder=' ' required>
         <div class='abs'><label for='name' class='text-label'>Name</label></div>
         <div class='abs'>
           <label for='desc' class='text-label desc-label'>Description</label>
         </div>
-        <textarea class='form-description' type='textarea' autocomplete='off' autocapitalize='on' id='desc' placeholder=' '></textarea>
+        <textarea class='form-description' type='textarea' id='desc'></textarea>
         <div class='pickers'>
+          <span>Due<br>date:</span>
           <input type='date' id='form-date'>
           <select name='select-prio' id='select-prio'>
             <option value="none">Select priority:</option>
-            <option value="volvo">high</option>
-            <option value="saab">medium</option>
-            <option value="mercedes">low</option>
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="medium">low</option>
           </select>
         </div>
-        <button id='submit-add' class='submit'>submit</button>
+        <button type="button" id='submit-add' class='submit'>submit</button>
+        <button type="button" id='submit-edit' class='submit'>submit</button>
       </div>
     </div>
   </body>

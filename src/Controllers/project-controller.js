@@ -41,7 +41,7 @@ function getCurrentProject() {
 
 function addTask(id, pName) {
   if (getIndex(pName) === -1) {
-    createProject(pName);
+    return;
   }
   const i = getIndex(pName);
   projectList[i].tasks.push(id);

@@ -1,6 +1,6 @@
 import mainController from "../Controllers/main-controller";
 import projectController from "../Controllers/project-controller";
-import taskController from "../Controllers/task-controller";
+import formView from "./form-view";
 import projectView from "./project-view";
 import taskView from "./task-view";
 
@@ -14,7 +14,7 @@ function setStaticListeners() {
   const allTasks = document.querySelector('.all-tasks');
   const addProject = document.getElementById('add-project');
   const today = document.getElementById('today');
-  const nextWeek = document.getElementById('next-week');
+  const thisWeek = document.getElementById('this-week');
   allTasks.addEventListener('click', () => {
     projectController.setCurrentProject(undefined);
     projectView.setHighlight(allTasks);
@@ -26,13 +26,13 @@ function setStaticListeners() {
   today.addEventListener('click', () => {
     mainController.showTasksBetweenDates(/* today, tomorrow*/);
   });
-  nextWeek.addEventListener('click', () => {
+  thisWeek.addEventListener('click', () => {
     mainController.showTasksBetweenDates(/* today, next week */);
   });
 
   // task list
   const addTask = document.getElementById('add-task');
-  addTask.addEventListener('click', taskView.renderAddForm);
+  addTask.addEventListener('click', formView.renderAddForm);
   
   // completed list
   const completedContainer = document.getElementById('completed');
