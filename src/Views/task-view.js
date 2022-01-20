@@ -52,6 +52,10 @@ function renderTask(task) {
   const newTask = taskTemplate.cloneNode(true);
   const taskName = newTask.querySelector('p');
   const dueDate = newTask.querySelector('.due-date');
+  /*
+    <div class="checkbox-replacement"></div>
+    <p>finish back end</p><span class='priority HIGH'>● HIGH</span>
+  */
   newTask.setAttribute('id', `${task.id}`)
   if (!task.isComplete) {
     const addTask = document.getElementById('add-task');
@@ -101,7 +105,7 @@ function renderAddForm() {
     priority: 'high',
   }
   taskController.create(newTaskObj);
-  const project = projectController.getCurrentProject;
+  const project = projectController.getCurrentProject();
   mainController.showAllTasks(project);
 }
 

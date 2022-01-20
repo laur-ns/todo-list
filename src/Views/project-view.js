@@ -20,7 +20,6 @@ function setHighlight(pNode) {
     e.classList.remove('highlight');
   });
   const toHighlight = projectController.getCurrentProject();
-  console.log(toHighlight);
   if (toHighlight === undefined) {
     const allTasks = document.querySelector('.all-tasks');
     allTasks.classList.add('highlight');

@@ -157,7 +157,7 @@ li#add-project:hover {
   align-items: center;
   height: 60px;
   padding: 5px 12px 3px 12px;
-  cursor: pointer
+  /* cursor: pointer; */
 }
 
 .task-container:hover {
@@ -250,10 +250,30 @@ li#add-project:hover {
   transform: scale(1.15);
 }
 
+.priority {
+  margin-left: 12px;
+  font-size: 13px;
+  /* font-family: 'Dosis', sans-serif; -> logo */
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.priority.HIGH {
+  color: #FF0082;
+}
+
+.priority.MEDIUM {
+  color: #00E7FF;
+}
+
+.priority.LOW {
+  color: #B3FF19;
+}
+
 .task-container:hover .due-date,
 .task-container:hover .modify-icon,
-.task-container:hover .trash-icon {
-  display: flex;
+.task-container:hover .trash-icon,
+.task-container:hover .priority {
+  display: inline-block;
 }
 
 #add-task {
@@ -263,6 +283,7 @@ li#add-project:hover {
   margin-top: 8px;
   border: 2px solid #1d1d1d;
   background-color: #000001;
+  cursor: pointer;
 }
 
 #add-task:hover {
