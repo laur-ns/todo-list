@@ -119,7 +119,7 @@ li#add-project:hover {
   color: #B3FF19;
 }
 
-.prio-list ul {
+.date-list ul {
   border-top: 1px solid rgb(95, 95, 95);
   padding-top: 20px;
 }
@@ -251,22 +251,38 @@ li#add-project:hover {
 }
 
 .priority {
+  display: none;
   margin-left: 12px;
   font-size: 13px;
   /* font-family: 'Dosis', sans-serif; -> logo */
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.priority.HIGH {
+.HIGH:hover .priority {
+  display: inline;
   color: #FF0082;
 }
 
-.priority.MEDIUM {
+.MEDIUM:hover .priority{
+  display: inline;
   color: #00E7FF;
 }
 
-.priority.LOW {
-  color: #B3FF19;
+.LOW:hover .priority {
+  display: inline;
+  color: #93ce1c;
+}
+
+.HIGH.task-container {
+  border-left: 0.2rem solid #FF0082;
+}
+
+.MEDIUM.task-container {
+  border-left: 0.2rem solid #00E7FF;
+}
+
+.LOW.task-container {
+  border-left: 0.2rem solid #95d611;
 }
 
 .task-container:hover .due-date,
@@ -367,7 +383,7 @@ li#add-project:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.3rem;
+  margin-bottom: 2rem;
   margin-top: -3.2rem;
 }
 
@@ -405,7 +421,7 @@ li#add-project:hover {
   height: 3rem;
   padding: 0.7rem;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   font-size: 1.25rem;
   font-family: 'Dosis', sans-serif;
   border-radius: 0.5rem;
@@ -477,15 +493,15 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0 1rem 0;
+  margin: 1.15rem 0 1.15rem 0;
   gap: 1rem;
 }
 
 #form-date {
   flex-grow: 1;
-  text-align: center;
+  text-align: left;
   font-size: 1.25rem;
-  padding: 0.5rem 1.5rem 0.65rem 5.7rem;
+  padding-left: 0.5rem;
   font-family: 'Dosis', sans-serif;
   height: 2.8rem;
   border: 2px solid var(--border);

@@ -5,14 +5,14 @@ taskList[0] = {
   isComplete: false,
   project: 'asdfasdf',
   id: 123412342,
-  priority: 'medium',
+  priority: 'LOW',
 }
 taskList[1] = {
   name: 'finish front end',
   isComplete: true,
   project: 'study',
   id: 1345325435,
-  priority: 'high',
+  priority: 'HIGH',
 }
 
 const TaskFactory = (obj) => {

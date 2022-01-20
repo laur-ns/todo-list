@@ -40,7 +40,7 @@
       </div>
       <li id='add-project'>+ Add project</li>
 
-      <div class='prio-list'>
+      <div class='date-list'>
         <ul>
           <li id='today'>Today</li>
           <li id='this-week'>This Week</li>
@@ -55,6 +55,13 @@
       </div>
 
       <div id='task-list'>
+<div class="task-container border HIGH" id="123412342">
+  <label class="checkbox">
+    <input type="checkbox" class="checkbox-hidden">
+    <div class="checkbox-replacement"></div>
+    <p>finish back end</p><span class='priority'>● HIGH</span>
+    </label>
+    <div class="options-container"><span class="due-date"></span><img class="modify-icon" src="./assets/modify-outline.svg"><img class="trash-icon" src="./assets/trash-outline.svg"></div></div>
         <div class='task-container border' id='add-task'>
           <img src='./assets/add-circle.svg' class='add-icon'>
         </div>
@@ -87,9 +94,9 @@
           <input type='date' id='form-date'>
           <select name='select-prio' id='select-prio'>
             <option value="none">Select priority:</option>
-            <option value="high">high</option>
-            <option value="medium">medium</option>
-            <option value="medium">low</option>
+            <option value="HIGH">HIGH</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="LOW">LOW</option>
           </select>
         </div>
         <button type="button" id='submit-add' class='submit'>submit</button>

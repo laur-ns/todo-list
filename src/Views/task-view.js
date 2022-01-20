@@ -8,6 +8,7 @@ const label = document.createElement('label')
 const input = document.createElement('input');
 const replacement = document.createElement('div');
 const name = document.createElement('p');
+const prio = document.createElement('span');
 const options = document.createElement('div');
 const dueDate = document.createElement('span');
 const modifyIcon = document.createElement('img');
@@ -20,8 +21,11 @@ input.classList.add('checkbox-hidden');
 label.appendChild(input);
 replacement.classList.add('checkbox-replacement');
 label.appendChild(replacement)
-name.textContent = 'Finish todo list';
+name.textContent = '';
+prio.textContent = '● ';
+prio.classList.add('priority');
 label.appendChild(name);
+label.appendChild(prio);
 taskTemplate.appendChild(options);
 dueDate.classList.add('due-date');
 dueDate.textContent = '17/01/22';
@@ -52,11 +56,12 @@ function renderTask(task) {
   const newTask = taskTemplate.cloneNode(true);
   const taskName = newTask.querySelector('p');
   const dueDate = newTask.querySelector('.due-date');
-  /*
-    <div class="checkbox-replacement"></div>
-    <p>finish back end</p><span class='priority HIGH'>● HIGH</span>
-  */
+  const prio = newTask.querySelector('.priority');
+  const label = newTask.querySelector('label.checkbox');
+  newTask.classList.add(`${task.priority}`);
   newTask.setAttribute('id', `${task.id}`)
+  prio.textContent += `${task.priority}`;
+  label.appendChild(prio);
   if (!task.isComplete) {
     const addTask = document.getElementById('add-task');
     const container = document.querySelector('#task-list');
