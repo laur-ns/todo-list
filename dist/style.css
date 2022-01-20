@@ -37,8 +37,8 @@ body {
 
 #sidebar {
   display: flex;
-  width: 240px;
-  max-width: 240px;
+  width: 250px;
+  max-width: 250px;
   flex-shrink: 0;
   padding: 5px;
   overflow: hidden;
@@ -55,6 +55,15 @@ body {
   white-space: nowrap;
   color: #00E7FF;
   text-decoration: none;
+}
+
+.all-tasks {
+  border: 2px solid #383838;
+}
+
+.all-tasks:hover {
+  transition: border 0.2s;
+  border: 2px solid white;
 }
 
 .highlight {
@@ -247,6 +256,29 @@ li#add-project:hover {
   display: flex;
 }
 
+#add-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  border: 2px solid #1d1d1d;
+  background-color: #000001;
+}
+
+#add-task:hover {
+  transition: 0s;
+  border-color: #77aa10;
+  background-color: #080808;
+}
+
+.add-icon {
+  height: 30px;
+  filter: invert(5%) sepia(11%) saturate(170%) hue-rotate(315deg) brightness(106%) contrast(87%);
+}
+
+#add-task:hover > .add-icon {
+  filter: invert(78%) sepia(71%) saturate(4770%) hue-rotate(42deg) brightness(94%) contrast(87%);
+}
 
 #completed {
   display: flex;

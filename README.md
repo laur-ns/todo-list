@@ -8,6 +8,8 @@
 
 A module should have only one reason to change. E.g. a class shouldn't contain a method to console.log and another method to add to an array. The console.log should be kept in a different module/class/etc in case we want to change the logger to append to the dom instead of just logging to console.
 
+Clarification: Single responsibility != only does one thing. E.g. a chef's responsibility is to cook, but they can slice, bake, boil, etc. 
+
 ### Open/Closed Principle
 
 Open to extension but closed for modification. A well written class shouldn't have to be rewritten to integrate a new feature. When designing a class I should anticipate any extensions that might be made in the future. E.g. a class that converts decimal to binary, might want to convert other bases in the future, so instead a new class called NumberConverter is used that takes three arguments - the number, fromBase, and toBase, then converts accordingly. This means we can add additional number systems without ever modifying NumberConverter.
