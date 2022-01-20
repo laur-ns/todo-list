@@ -14,6 +14,8 @@
   </head>
 
   <body>
+
+
     <div id='sidebar'>
       <a href='https://github.com/laur-ns/' class='logo'>Simple Todo</a>
 
@@ -64,6 +66,31 @@
       </div>
       <div id='completed-dropdown'>
       </div>
+      </div>
+    </div>
+    <!-- all modals here -->
+    <div class='blur'>
+      <div class='modal-container' id='green-form'>
+        <div id='form-header'>
+          <div id='header-title'>add task</div>
+          <button class='close'>×</button>
+        </div>
+        <input class='form-text' type='text' autocomplete='off' autocapitalize='on' id='name' placeholder=' '>
+        <div class='abs'><label for='name' class='text-label'>Name</label></div>
+        <div class='abs'>
+          <label for='desc' class='text-label desc-label'>Description</label>
+        </div>
+        <textarea class='form-description' type='textarea' autocomplete='off' autocapitalize='on' id='desc' placeholder=' '></textarea>
+        <div class='pickers'>
+          <input type='date' id='form-date'>
+          <select name='select-prio' id='select-prio'>
+            <option value="none">Select priority:</option>
+            <option value="volvo">high</option>
+            <option value="saab">medium</option>
+            <option value="mercedes">low</option>
+          </select>
+        </div>
+        <button id='submit-add' class='submit'>submit</button>
       </div>
     </div>
   </body>
