@@ -20,9 +20,15 @@ function setStaticListeners() {
     projectView.setHeader(allTasks.textContent);
     mainController.showAllTasks(undefined)
   });
-  addProject.addEventListener('click', () => {
-    projectView.renderAddForm();
-  })
+  window.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+      if (document.activeElement === addProject &&
+          addProject.value !== '') {
+        projectController.createProject(addProject.value);
+        addProject.value = '';
+      }
+    }
+  });
   today.addEventListener('click', () => {
     mainController.showTasksBetweenDates(/* today, tomorrow*/);
   });

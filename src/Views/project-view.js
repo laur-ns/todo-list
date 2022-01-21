@@ -1,10 +1,6 @@
 import mainController from "../Controllers/main-controller";
 import projectController from "../Controllers/project-controller";
 
-function renderAddForm() {
-  projectController.createProject(prompt('Insert project name'));
-}
-
 function renderProject(pName) {
   const projectList = document.querySelector('.project-list > ul');
   const project = document.createElement('li');
@@ -47,7 +43,6 @@ function setListener(pNode) {
 
 const projectView = {
   setListener,
-  renderAddForm,
   renderProject,
   setHighlight,
   setHeader,
