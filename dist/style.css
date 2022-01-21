@@ -408,6 +408,13 @@ label.addproj-label:hover {
 }
 
 #down-arrow {
+  display: inline;
+  filter: invert(84%) sepia(11%) saturate(56%) hue-rotate(288deg) brightness(115%) contrast(98%);
+  height: 35px;
+}
+
+#up-arrow {
+  display: none;
   filter: invert(84%) sepia(11%) saturate(56%) hue-rotate(288deg) brightness(115%) contrast(98%);
   height: 35px;
 }

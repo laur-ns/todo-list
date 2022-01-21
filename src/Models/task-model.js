@@ -1,5 +1,6 @@
 const taskList = [];
 
+// demo tasks
 taskList[0] = {
   name: 'finish back end',
   isComplete: false,

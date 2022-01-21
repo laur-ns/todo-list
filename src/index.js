@@ -10,3 +10,4 @@ projectController.showAllProjects();
 mainView.setStaticListeners();
 formView.setListeners();
 dateController.setHeaderDate();
+mainView.toggleDropdown();
