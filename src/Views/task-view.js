@@ -58,11 +58,15 @@ function renderTask(task) {
   const dueDate = newTask.querySelector('.due-date');
   const prio = newTask.querySelector('.priority');
   const label = newTask.querySelector('label.checkbox');
-  newTask.classList.add(`${task.priority}`);
   newTask.setAttribute('id', `${task.id}`)
   prio.textContent += `${task.priority}`;
   label.appendChild(prio);
+  console.log(task.priority);
+  if (task.priority === 'none') {
+    prio.textContent = '';
+  }
   if (!task.isComplete) {
+    newTask.classList.add(`${task.priority}`);
     const addTask = document.getElementById('add-task');
     const container = document.querySelector('#task-list');
     taskName.textContent = task.name;
@@ -79,7 +83,7 @@ function renderTask(task) {
     dueDate.textContent = task.dueDate;
     container.appendChild(newTask);
     checkbox.checked = true;
-    setListeners(newTask)
+    setListeners(newTask);
   }
 }
 

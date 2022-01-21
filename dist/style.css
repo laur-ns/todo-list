@@ -127,6 +127,7 @@ li#add-project:hover {
 #main-container {
   display: flex;
   flex-flow: column nowrap;
+  max-height: 100vh;
   padding: 20px 50px 50px 50px;
   width: 100%;
   background-color:#000001;
@@ -137,6 +138,7 @@ li#add-project:hover {
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  margin-bottom: 1rem;
 }
 
 #header > h1, #header h4 {
@@ -147,7 +149,8 @@ li#add-project:hover {
 #task-list {
   display: flex;
   flex-flow: column nowrap;
-  height: 60vh;
+  min-height: 60vh;
+  overflow-y: scroll;
   gap: 5px;
 }
 
@@ -155,6 +158,7 @@ li#add-project:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
   height: 60px;
   padding: 5px 12px 3px 12px;
   /* cursor: pointer; */
@@ -258,30 +262,30 @@ li#add-project:hover {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.HIGH:hover .priority {
+.high:hover .priority {
   display: inline;
   color: #FF0082;
 }
 
-.MEDIUM:hover .priority{
+.medium:hover .priority{
   display: inline;
-  color: #00E7FF;
+  color: #16b4c5;
 }
 
-.LOW:hover .priority {
+.low:hover .priority {
   display: inline;
-  color: #93ce1c;
+  color: #6ba000;
 }
 
-.HIGH.task-container {
+.high.task-container {
   border-left: 0.2rem solid #FF0082;
 }
 
-.MEDIUM.task-container {
+.medium.task-container {
   border-left: 0.2rem solid #00E7FF;
 }
 
-.LOW.task-container {
+.low.task-container {
   border-left: 0.2rem solid #95d611;
 }
 
@@ -315,6 +319,19 @@ li#add-project:hover {
 
 #add-task:hover > .add-icon {
   filter: invert(78%) sepia(71%) saturate(4770%) hue-rotate(42deg) brightness(94%) contrast(87%);
+}
+
+#dropdown-wrapper {
+  height: 100%;
+}
+
+#completed-dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 #completed {

@@ -2,7 +2,6 @@ import mainController from "../Controllers/main-controller";
 import projectController from "../Controllers/project-controller";
 import formView from "./form-view";
 import projectView from "./project-view";
-import taskView from "./task-view";
 
 function renderCompleteCount(count) {
   const element = document.querySelector('#completed > h2');
@@ -40,7 +39,12 @@ function setStaticListeners() {
 }
 
 function toggleDropdown() {
-  console.log('toggling dropdown');
+  const tasks = document.querySelector('#completed-dropdown');
+  if (tasks.style.display === 'none') {
+    tasks.style.display = 'flex'
+  } else {
+    tasks.style.display = 'none';
+  }
 }
 
 const mainView = {
