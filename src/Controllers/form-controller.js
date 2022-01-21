@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+import parseISO from "date-fns/parseISO";
 import formView from "../Views/form-view";
 import mainController from "./main-controller";
 import projectController from "./project-controller";
@@ -6,10 +8,14 @@ import taskController from "./task-controller";
 function setCssVariables(formType) {
   if (formType.toLowerCase() === 'add') {
     document.documentElement.style.setProperty('--main', '#70a011')
-    document.documentElement.style.setProperty('--main', '#b2ff194b')
-    document.documentElement.style.setProperty('--main', '#b2ff1934')
-    document.documentElement.style.setProperty('--main', '#a9fa06')
+    document.documentElement.style.setProperty('--hover', '#b2ff194b')
+    document.documentElement.style.setProperty('--border', '#b2ff1934')
+    document.documentElement.style.setProperty('--bright', '#a9fa06')
   } else if ( formType.toLowerCase() === 'edit') {
+    document.documentElement.style.setProperty('--main', '#05afc2')
+    document.documentElement.style.setProperty('--hover', '#15aabb3b')
+    document.documentElement.style.setProperty('--border', '#05afc223')
+    document.documentElement.style.setProperty('--bright', '#44ecff')
   }
 }
 
@@ -18,27 +24,23 @@ function submitNewTask(obj) {
   taskController.create(obj);
   mainController.showAllTasks(obj.project);
   formView.hideForms();
-  console.log(obj);
 }
 
-function getTodayDate() {
-  const today = new Date();
-  let month = today.getMonth() + 1;
-  let day = today.getDate();
-  if (today.getMonth() < 10) {
-    month = `0${month}`;
-  }
-  if (today.getDate() < 10) {
-    day = `0${today.getDate()}`;
-  }
-  return `${today.getFullYear()}-${month}-${day}`
+function submitEditTask(obj) {
+
 }
 
+function formatHtmlDate(date) {
+  if (date === '') {
+    return '';
+  }
+  return format(parseISO(date), 'P');
+}
 
 const formController = {
-  getTodayDate,
   setCssVariables,
-  submitNewTask
+  submitNewTask,
+  formatHtmlDate,
 }
 
 export default formController;

@@ -1,6 +1,8 @@
-import mainController from "../Controllers/main-controller";
-import projectController from "../Controllers/project-controller";
+import { format } from "date-fns";
+import parseISO from "date-fns/parseISO";
+import formController from "../Controllers/form-controller";
 import taskController from "../Controllers/task-controller";
+import formView from "./form-view";
 
 /* task element that will be cloned to create new tasks */
 const taskTemplate = document.createElement('div');
@@ -41,15 +43,13 @@ options.appendChild(trashIcon);
 function setListeners(node) {
   const id = parseInt(node.getAttribute('id'));
   const trash = node.querySelector('.trash-icon');
-  trash.addEventListener('click', () => {
-    taskController.remove(id);
-  });
   const modify = node.querySelector('.modify-icon');
-  modify.addEventListener('click', () => console.log('modifying...'));
   const checkbox = node.querySelector('input');
-  checkbox.addEventListener('click', () => {
-    taskController.toggleComplete(id);
-  });
+  const dueDate = node.querySelector('.due-date');
+  dueDate.addEventListener('click', formView.renderEditForm.bind(null, id));
+  modify.addEventListener('click', formView.renderEditForm.bind(null, id));
+  trash.addEventListener('click', taskController.remove.bind(null, id));
+  checkbox.addEventListener('click', taskController.toggleComplete.bind(null, id));
 }
 
 function renderTask(task) {
@@ -60,8 +60,8 @@ function renderTask(task) {
   const label = newTask.querySelector('label.checkbox');
   newTask.setAttribute('id', `${task.id}`)
   prio.textContent += `${task.priority}`;
+  dueDate.textContent = formController.formatHtmlDate(task.dueDate);
   label.appendChild(prio);
-  console.log(task.priority);
   if (task.priority === 'none') {
     prio.textContent = '';
   }
@@ -70,7 +70,6 @@ function renderTask(task) {
     const addTask = document.getElementById('add-task');
     const container = document.querySelector('#task-list');
     taskName.textContent = task.name;
-    dueDate.textContent = task.dueDate;
     container.insertBefore(newTask, addTask);
     setListeners(newTask);
   } else {
@@ -80,7 +79,6 @@ function renderTask(task) {
     taskName.textContent = '';
     strike.textContent = task.name;
     taskName.appendChild(strike)
-    dueDate.textContent = task.dueDate;
     container.appendChild(newTask);
     checkbox.checked = true;
     setListeners(newTask);

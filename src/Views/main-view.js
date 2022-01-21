@@ -17,6 +17,7 @@ function setStaticListeners() {
   allTasks.addEventListener('click', () => {
     projectController.setCurrentProject(undefined);
     projectView.setHighlight(allTasks);
+    projectView.setHeader(allTasks.textContent);
     mainController.showAllTasks(undefined)
   });
   addProject.addEventListener('click', () => {

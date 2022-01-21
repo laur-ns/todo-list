@@ -1,3 +1,4 @@
+import dateController from './Controllers/date-controller';
 import mainController from './Controllers/main-controller';
 import projectController from './Controllers/project-controller';
 import formView from './Views/form-view';
@@ -8,3 +9,4 @@ mainController.showAllTasks();
 projectController.showAllProjects();
 mainView.setStaticListeners();
 formView.setListeners();
+dateController.setHeaderDate();

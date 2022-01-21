@@ -46,12 +46,17 @@ function toggleComplete(id) {
   mainView.renderCompleteCount(getCompletedCount());
 }
 
+function getTaskById(id) {
+  return taskList[getIndexbyId(id)];
+}
+
 const taskController = {
   create,
   remove,
   getIndexbyId,
   toggleComplete,
   getCompletedCount,
+  getTaskById,
 }
 
 export default taskController;

@@ -30,12 +30,18 @@ function setHighlight(pNode) {
   return;
 }
 
+function setHeader(title) {
+  const header = document.querySelector('#header > h1');
+  header.textContent = title;
+}
+
 function setListener(pNode) {
   const projectName = pNode.textContent;
   pNode.addEventListener('click', () => {
     projectController.setCurrentProject(projectName);
     setHighlight(pNode);
     mainController.showAllTasks(projectName);
+    setHeader(pNode.textContent);
   });
 }
 
@@ -44,6 +50,7 @@ const projectView = {
   renderAddForm,
   renderProject,
   setHighlight,
+  setHeader,
 }
 
 

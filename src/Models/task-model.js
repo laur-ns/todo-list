@@ -3,14 +3,18 @@ const taskList = [];
 taskList[0] = {
   name: 'finish back end',
   isComplete: false,
+  description: '',
   project: 'asdfasdf',
+  dueDate: '',
   id: 123412342,
   priority: 'low',
 }
 taskList[1] = {
   name: 'finish front end',
+  description: '',
   isComplete: true,
   project: 'study',
+  dueDate: '',
   id: 1345325435,
   priority: 'high',
 }

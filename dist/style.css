@@ -146,6 +146,10 @@ li#add-project:hover {
   font-weight: 300;
 }
 
+#header > h4 {
+  margin-top: 1rem;
+}
+
 #task-list {
   display: flex;
   flex-flow: column nowrap;
@@ -234,7 +238,7 @@ li#add-project:hover {
 
 .due-date {
   display: none;
-  padding-top: 2px;
+  padding-top: 4px;
   align-items: center;
   color: #555555;
 }
@@ -374,12 +378,6 @@ li#add-project:hover {
   backdrop-filter: blur(4px);
 }
 
-:root {
-  --main: #70a011;
-  --hover: #b2ff194b;
-  --border: #b2ff1934;
-  --bright: #a9fa06;
-}
 /* modals */
 .modal-container {
   display: none;
@@ -476,9 +474,9 @@ textarea {
   resize: none;
 }
 
-.form-text:focus + div > .text-label,
+.form-text:focus + div > .text-label.name,
 .form-text:not(:placeholder-shown).form-text:not(:focus)
-~ div > .text-label {
+~ div > .text-label.name {
   color: var(--bright);
   bottom: 2.5rem;
   left: 0.65rem;
@@ -554,7 +552,7 @@ textarea {
 }
 
 .submit {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -566,8 +564,8 @@ textarea {
   font-size: 1.5rem;
   font-family: 'Josefin Sans', sans-serif;
   cursor: pointer;
-  border-bottom: 3px solid var(--main);
   transition: all 0.2s;
+  border-bottom: 3px solid var(--main);
 }
 
 .submit:hover {

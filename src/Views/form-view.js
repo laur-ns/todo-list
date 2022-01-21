@@ -1,4 +1,6 @@
+import dateController from "../Controllers/date-controller";
 import formController from "../Controllers/form-controller";
+import taskController from "../Controllers/task-controller";
 
 function setListeners() {
   const container = document.querySelector('.modal-container');
@@ -6,7 +8,7 @@ function setListeners() {
   const description = document.querySelector('#desc');
   const date = document.querySelector('#form-date');
   const prio = document.querySelector('#select-prio');
-  const submit = document.querySelector('.submit');
+  const submitAdd = document.querySelector('#submit-add');
   const closeButton = document.querySelector('.close');
   const descLabel = document.querySelector('.desc-label');
   const blur = document.querySelector('.blur');
@@ -14,16 +16,14 @@ function setListeners() {
     if (e.key === 'Enter') {
       if (container.style.display === 'flex') {
         e.preventDefault();
-        submit.click();
+        submitAdd.click();
       }
     }
   });
-
   container.addEventListener('click', e => {
     e.stopPropagation()
   });
-  date.value = formController.getTodayDate();
-  description.addEventListener('click', () => {
+    description.addEventListener('focusin', () => {
     descLabel.classList.add('focus');
   });
   description.addEventListener('focusout', () => {
@@ -33,9 +33,12 @@ function setListeners() {
   });
   blur.addEventListener('click', hideForms);
   closeButton.addEventListener('click', hideForms)
-  submit.addEventListener('click', () => {
+  submitAdd.addEventListener('click', () => {
     if (name.value === '') {
       alert('Name must be filled out');
+      return;
+    } else if (!dateController.validateDate(date.value)) {
+      alert("You can't set a due date in the past!")
       return;
     }
     const newTaskObj = {
@@ -46,27 +49,64 @@ function setListeners() {
       priority: prio.value
     }
     formController.submitNewTask(newTaskObj);
-  });  
+  }); 
 }
 
 function hideForms() {
+  clearForm();
   document.querySelector('.modal-container').style.display = 'none';
-  document.querySelector('.submit').style.display = 'none';
+  document.querySelector('#submit-edit').style.display = 'none';
+  document.querySelector('#submit-add').style.display = 'none';
   document.querySelector('.blur').style.display = 'none';
 }
 
 function renderAddForm() {
+  const header = document.querySelector('#header-title')
   const blur = document.querySelector('.blur');
   const rootnode = document.querySelector('.modal-container');
-  const submitAdd = document.querySelector('#submit-add');
-  formController.setCssVariables('green');
+  const submitAdd = rootnode.querySelector('#submit-add');
+  const date = rootnode.querySelector('#form-date');
+  formController.setCssVariables('add');
+  header.textContent = 'add task';
   blur.style.display = 'flex';
   rootnode.style.display = 'flex';
   submitAdd.style.display = 'flex';
+  date.value = '';
 }
 
-function renderEditForm() {
-  formController.setCssVariables('blue');
+function renderEditForm(id) {
+  const task = taskController.getTaskById(id)
+  const header = document.querySelector('#header-title')
+  const blur = document.querySelector('.blur');
+  const rootnode = document.querySelector('.modal-container');
+  const name = rootnode.querySelector('.form-text');
+  const submitAdd = rootnode.querySelector('#submit-edit');
+  const description = rootnode.querySelector('#desc');
+  const date = rootnode.querySelector('#form-date');
+  const prio = rootnode.querySelector('#select-prio');
+  rootnode.classList.add(id);
+  header.textContent = `edit: ${task.name}`;
+  formController.setCssVariables('edit');
+  blur.style.display = 'flex';
+  rootnode.style.display = 'flex';
+  description.value = task.description;
+  date.value = task.dueDate;
+  if (!description.value === '') {
+    description.classList.add('focus');
+  }
+  prio.value = task.priority;
+  name.value = task.name;
+  submitAdd.style.display = 'flex';
+}
+
+function clearForm() {
+  const rootnode = document.querySelector('.modal-container');
+  const inputs = rootnode.querySelectorAll('input');
+  const desc = rootnode.querySelector('textarea');
+  inputs.forEach(e => {
+    e.value = '';
+  });
+  desc.value = '';
 }
 
 
