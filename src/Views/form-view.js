@@ -1,3 +1,4 @@
+import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import dateController from "../Controllers/date-controller";
 import formController from "../Controllers/form-controller";
@@ -11,6 +12,7 @@ function setListeners() {
   const date = document.querySelector('#form-date');
   const prio = document.querySelector('#select-prio');
   const submitAdd = document.querySelector('#submit-add');
+  const submitEdit = document.querySelector('#submit-edit');
   const closeButton = document.querySelector('.close');
   const descLabel = document.querySelector('.desc-label');
   const blur = document.querySelector('.blur');
@@ -46,12 +48,36 @@ function setListeners() {
     const newTaskObj = {
       name: name.value,
       description: description.value,
-      dueDate: parseISO(date.value),
+      dueDate: date.value,
       project: undefined,
       priority: prio.value
     }
     formController.submitNewTask(newTaskObj);
-  }); 
+  });
+  submitEdit.addEventListener('click', (e) => {
+    if (name.value === '') {
+      alert('Name must be filled out');
+      return;
+    } else if (!dateController.validateDate(date.value)) {
+      alert("You can't set a due date in the past!");
+      return;
+    }
+    let newDate;
+    if (date.value === '') {
+      newDate = '';
+    } 
+    else {
+      newDate = date.value;
+    }
+    const editTaskObj = {
+      name: name.value,
+      id: e.target.value,
+      description: description.value,
+      dueDate: newDate,
+      priority: prio.value,
+    }
+    formController.submitEditTask(editTaskObj);
+  });
 }
 
 function hideForms() {
@@ -73,7 +99,7 @@ function renderAddForm() {
   blur.style.display = 'flex';
   rootnode.style.display = 'flex';
   submitAdd.style.display = 'flex';
-  date.value = '';
+  date.value = dateController.getTodayDate();
 }
 
 function renderEditForm(id) {
@@ -82,7 +108,7 @@ function renderEditForm(id) {
   const blur = document.querySelector('.blur');
   const rootnode = document.querySelector('.modal-container');
   const name = rootnode.querySelector('.form-text');
-  const submitAdd = rootnode.querySelector('#submit-edit');
+  const submitEdit = rootnode.querySelector('#submit-edit');
   const description = rootnode.querySelector('#desc');
   const date = rootnode.querySelector('#form-date');
   const prio = rootnode.querySelector('#select-prio');
@@ -92,13 +118,18 @@ function renderEditForm(id) {
   blur.style.display = 'flex';
   rootnode.style.display = 'flex';
   description.value = task.description;
-  date.value = task.dueDate;
+  if (task.dueDate === '') {
+    date.value = '';
+  } else {
+    date.value = format(parseISO(task.dueDate), 'yyyy-MM-dd');
+  }
   if (!description.value === '') {
     description.classList.add('focus');
   }
   prio.value = task.priority;
   name.value = task.name;
-  submitAdd.style.display = 'flex';
+  submitEdit.style.display = 'flex';
+  submitEdit.value = id;
 }
 
 function clearForm() {

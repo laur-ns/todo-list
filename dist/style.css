@@ -97,6 +97,7 @@ ul {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 22px;
   overflow: hidden;
+  height: 2.4rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   cursor: pointer;

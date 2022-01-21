@@ -7,6 +7,7 @@ const taskController = (() => {
   function create(obj) {
     let index = (taskList.push(TaskFactory(obj))) - 1;
     projectController.addTask(index, taskList[index].project);
+    console.log(taskList[index]);
   }
 
   function remove(id) {
@@ -51,6 +52,14 @@ const taskController = (() => {
     return taskList[getIndexbyId(id)];
   }
 
+  function edit(obj) {
+    const i = getIndexbyId(parseInt(obj.id));
+    taskList[i].name = obj.name;
+    taskList[i].description = obj.description;
+    taskList[i].dueDate = obj.dueDate;
+    taskList[i].priority = obj.priority;
+  }
+
   return {
     create,
     remove,
@@ -58,6 +67,7 @@ const taskController = (() => {
     toggleComplete,
     getCompletedCount,
     getTaskById,
+    edit,
   }
 })();
 

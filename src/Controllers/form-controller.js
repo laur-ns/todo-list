@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import formView from "../Views/form-view";
 import mainController from "./main-controller";
@@ -28,19 +28,22 @@ const formController = (() => {
   }
 
   function submitEditTask(obj) {
-
+    taskController.edit(obj);
+    mainController.showAllTasks(projectController.getCurrentProject());
+    formView.hideForms();
   }
 
   function formatDate(date) {
-    if (date === '') {
+    if (date == '') {
       return '';
     }
-    return format(date, 'P');
+    return format(parseISO(date), 'P');
   }
 
   return {
     setCssVariables,
     submitNewTask,
+    submitEditTask,
     formatDate,
   }
 })();
