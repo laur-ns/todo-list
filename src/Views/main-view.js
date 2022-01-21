@@ -1,3 +1,6 @@
+import { add } from "date-fns";
+import parseISO from "date-fns/parseISO";
+import dateController from "../Controllers/date-controller";
 import mainController from "../Controllers/main-controller";
 import projectController from "../Controllers/project-controller";
 import formView from "./form-view";
@@ -29,11 +32,17 @@ function setStaticListeners() {
       }
     }
   });
+  let todaysDate = parseISO(dateController.getTodayDate())
   today.addEventListener('click', () => {
-    mainController.showTasksBetweenDates(/* today, tomorrow*/);
+    dateController.showTasksBetweenDates(todaysDate, todaysDate)
+    projectController.setCurrentProject(null)
+    projectView.setHighlight(today);
   });
   thisWeek.addEventListener('click', () => {
-    mainController.showTasksBetweenDates(/* today, next week */);
+    const nextWeek = add(todaysDate, {weeks: 1});
+    dateController.showTasksBetweenDates(todaysDate, nextWeek);
+    projectController.setCurrentProject(null)
+    projectView.setHighlight(thisWeek);
   });
 
   // task list

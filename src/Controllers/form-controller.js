@@ -30,17 +30,17 @@ function submitEditTask(obj) {
 
 }
 
-function formatHtmlDate(date) {
+function formatDate(date) {
   if (date === '') {
     return '';
   }
-  return format(parseISO(date), 'P');
+  return format(date, 'P');
 }
 
 const formController = {
   setCssVariables,
   submitNewTask,
-  formatHtmlDate,
+  formatDate,
 }
 
 export default formController;

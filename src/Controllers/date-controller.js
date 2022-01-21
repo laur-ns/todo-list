@@ -1,5 +1,8 @@
 import format from "date-fns/format";
-import { compareAsc, parseISO } from "date-fns";
+import { compareAsc, compareDesc, parseISO } from "date-fns";
+import { taskList } from "../Models/task-model";
+import taskView from "../Views/task-view";
+import mainView from "../Views/main-view";
 
 function setHeaderDate() {
   const date = getTodayDate();
@@ -30,10 +33,33 @@ function validateDate(date) {
   return true;
 }
 
+function showTasksBetweenDates(date1, date2) {
+  taskView.hideAllTasks();
+  taskView.hideAddButton();
+  let completeCount = 0;
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i].dueDate === '') { continue; }
+    if ((compareAsc(taskList[i].dueDate, date1) !== -1) &&
+        (compareAsc(taskList[i].dueDate, date2) !==  1)) {
+      if (taskList[i].isComplete) { completeCount++; }
+      taskView.renderTask(taskList[i]);
+    }
+  }
+  const header = document.querySelector('#header > h1');
+  if (date1 === date2) {
+    header.textContent = 'Due Today';
+  } else {
+    date2 = format(date2, 'Do MMMM');
+    header.textContent = `Due by ${date2}`;
+  }
+  mainView.renderCompleteCount(completeCount);
+}
+
 const dateController = {
   setHeaderDate,
   getTodayDate,
   validateDate,
+  showTasksBetweenDates,
 }
 
 export default dateController;

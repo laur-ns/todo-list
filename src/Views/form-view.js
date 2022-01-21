@@ -1,8 +1,10 @@
+import parseISO from "date-fns/parseISO";
 import dateController from "../Controllers/date-controller";
 import formController from "../Controllers/form-controller";
 import taskController from "../Controllers/task-controller";
 
 function setListeners() {
+  // event listeners for every form input
   const container = document.querySelector('.modal-container');
   const name = document.querySelector('#name');
   const description = document.querySelector('#desc');
@@ -44,7 +46,7 @@ function setListeners() {
     const newTaskObj = {
       name: name.value,
       description: description.value,
-      dueDate: date.value,
+      dueDate: parseISO(date.value),
       project: undefined,
       priority: prio.value
     }

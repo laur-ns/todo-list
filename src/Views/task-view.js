@@ -60,7 +60,7 @@ function renderTask(task) {
   const label = newTask.querySelector('label.checkbox');
   newTask.setAttribute('id', `${task.id}`)
   prio.textContent += `${task.priority}`;
-  dueDate.textContent = formController.formatHtmlDate(task.dueDate);
+  dueDate.textContent = formController.formatDate(task.dueDate);
   label.appendChild(prio);
   if (task.priority === 'none') {
     prio.textContent = '';
@@ -100,11 +100,23 @@ function hideAllTasks() {
   });
 }
 
+function hideAddButton() {
+  const button = document.getElementById('add-task');
+  button.style.display = 'none';
+}
+
+function showAddButton() {
+  const button = document.getElementById('add-task');
+  button.style.display = 'flex';
+}
+
 const taskView = {
   setListeners,
   renderTask,
   hideTask,
   hideAllTasks,
+  hideAddButton,
+  showAddButton,
 }
 
 export default taskView;

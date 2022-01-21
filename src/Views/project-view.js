@@ -11,16 +11,16 @@ function renderProject(pName) {
 
 function setHighlight(pNode) {
   const projects = document.querySelectorAll('.project-list ul > *');
-  projects.forEach(e => {
-    // remove all highlights
-    e.classList.remove('highlight');
-  });
+  const dates = document.querySelectorAll('.date-list li');
+  // remove all highlights
+  projects.forEach(e => e.classList.remove('highlight'));
+  dates.forEach(e => e.classList.remove('highlight'));
+  console.log(dates);
   const toHighlight = projectController.getCurrentProject();
   if (toHighlight === undefined) {
     const allTasks = document.querySelector('.all-tasks');
     allTasks.classList.add('highlight');
-  }
-  else if (pNode.textContent == toHighlight) {
+  } else {
     pNode.classList.add('highlight');
   }
   return;

@@ -3,12 +3,9 @@ import taskView from "../Views/task-view";
 import { taskList } from "../Models/task-model";
 import taskController from "./task-controller";
 
-function showTasksBetweenDates() {
-  console.log('showing tasks...');
-}
-
 function showAllTasks(project) {
   taskView.hideAllTasks();
+  taskView.showAddButton();
   let tasksToRender = [];
   if (project === undefined) {
     // if no project specified, display all
@@ -27,7 +24,6 @@ function showAllTasks(project) {
 }
 
 const mainController = {
-  showTasksBetweenDates,
   showAllTasks,
 }
 
