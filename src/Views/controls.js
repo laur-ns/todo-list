@@ -1,12 +1,15 @@
 import filterPrio from '../Controllers/filter';
+import searchTasks from '../Controllers/search';
 import sortDate from '../Controllers/sort';
 import taskView from '../Views/task-view';
 
 function setListeners() {
   const filter = document.querySelector('#filter-prio');
   const sort = document.querySelector('#sort-date');
+  const search = document.querySelector('input[type="search"]');
   filter.addEventListener('change', () => filterPrio(filter));
   sort.addEventListener('change', () => sortDate(sort));
+  search.addEventListener('keyup', () => searchTasks(search));
 }
 
 function resetFilters() {

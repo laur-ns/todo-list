@@ -460,6 +460,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/Controllers/search.js":
+/*!***********************************!*\
+  !*** ./src/Controllers/search.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ searchTasks)\n/* harmony export */ });\n/* harmony import */ var _Views_task_view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Views/task-view */ \"./src/Views/task-view.js\");\n\n\nfunction searchTasks(node) {\n  const tasks = _Views_task_view__WEBPACK_IMPORTED_MODULE_0__[\"default\"].selectAllTasks();\n  tasks.forEach(e => e.style.display = 'flex')\n  if (node.value == '') {\n    return;\n  }\n  tasks.forEach(e => {\n    const text = e.querySelector('p').textContent.toLocaleLowerCase();\n    if (!text.includes(node.value)) {\n      e.style.display = 'none';\n    }\n  });\n}\n\n//# sourceURL=webpack://todo-list/./src/Controllers/search.js?");
+
+/***/ }),
+
 /***/ "./src/Controllers/sort.js":
 /*!*********************************!*\
   !*** ./src/Controllers/sort.js ***!
@@ -506,7 +516,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Controllers_filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Controllers/filter */ \"./src/Controllers/filter.js\");\n/* harmony import */ var _Controllers_sort__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Controllers/sort */ \"./src/Controllers/sort.js\");\n/* harmony import */ var _Views_task_view__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/task-view */ \"./src/Views/task-view.js\");\n\n\n\n\nfunction setListeners() {\n  const filter = document.querySelector('#filter-prio');\n  const sort = document.querySelector('#sort-date');\n  filter.addEventListener('change', () => (0,_Controllers_filter__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(filter));\n  sort.addEventListener('change', () => (0,_Controllers_sort__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(sort));\n}\n\nfunction resetFilters() {\n  const controls = document.querySelectorAll('#control select.focus, #control input.focus');\n  const tasks = _Views_task_view__WEBPACK_IMPORTED_MODULE_2__[\"default\"].selectAllTasks();\n  controls.forEach(e => {\n    e.classList.remove('focus');\n    e.value = 'none';\n  });\n  tasks.forEach(e => e.style.display = 'flex');\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({setListeners, resetFilters});\n\n//# sourceURL=webpack://todo-list/./src/Views/controls.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Controllers_filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Controllers/filter */ \"./src/Controllers/filter.js\");\n/* harmony import */ var _Controllers_search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Controllers/search */ \"./src/Controllers/search.js\");\n/* harmony import */ var _Controllers_sort__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Controllers/sort */ \"./src/Controllers/sort.js\");\n/* harmony import */ var _Views_task_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/task-view */ \"./src/Views/task-view.js\");\n\n\n\n\n\nfunction setListeners() {\n  const filter = document.querySelector('#filter-prio');\n  const sort = document.querySelector('#sort-date');\n  const search = document.querySelector('input[type=\"search\"]');\n  filter.addEventListener('change', () => (0,_Controllers_filter__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(filter));\n  sort.addEventListener('change', () => (0,_Controllers_sort__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(sort));\n  search.addEventListener('keyup', () => (0,_Controllers_search__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(search));\n}\n\nfunction resetFilters() {\n  const controls = document.querySelectorAll('#control select.focus, #control input.focus');\n  const tasks = _Views_task_view__WEBPACK_IMPORTED_MODULE_3__[\"default\"].selectAllTasks();\n  controls.forEach(e => {\n    e.classList.remove('focus');\n    e.value = 'none';\n  });\n  tasks.forEach(e => e.style.display = 'flex');\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({setListeners, resetFilters});\n\n//# sourceURL=webpack://todo-list/./src/Views/controls.js?");
 
 /***/ }),
 

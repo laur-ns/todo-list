@@ -687,6 +687,11 @@ input[type='search'] {
   border-bottom: 2px solid #00e5ff4b;
 }
 
+input[type='search']:focus,
+input[type='search']:not(:placeholder-shown) {
+  border-bottom: 2px solid #00E7FF;
+}
+
 input[type='search']::placeholder {
   color: white;
 }
