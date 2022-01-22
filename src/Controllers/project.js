@@ -1,5 +1,5 @@
-import projectView from '../Views/project-view';
-import {projectList, ProjectFactory} from '../Models/project-model';
+import projectView from '../Views/project';
+import {projectList, ProjectFactory} from '../Models/project';
 
 let currentProject = undefined;
 const projectController = (() => {
@@ -16,6 +16,7 @@ const projectController = (() => {
     const newProject = {name: pName,}
     projectList.push(ProjectFactory(newProject));
     projectView.renderProject(pName);
+    localStorage.setItem("projects", JSON.stringify(projectList));
     return pName;
   }
 
@@ -43,6 +44,7 @@ const projectController = (() => {
     }
     const i = getIndex(pName);
     projectList[i].tasks.push(id);
+    localStorage.setItem("projects", JSON.stringify(projectList));
   }
 
   function removeTask(id, pName) {

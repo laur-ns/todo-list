@@ -1,7 +1,7 @@
 import filterPrio from '../Controllers/filter';
 import searchTasks from '../Controllers/search';
 import sortDate from '../Controllers/sort';
-import taskView from '../Views/task-view';
+import taskView from './task';
 
 function setListeners() {
   const filter = document.querySelector('#filter-prio');
@@ -13,13 +13,15 @@ function setListeners() {
 }
 
 function resetFilters() {
-  const controls = document.querySelectorAll('#control select.focus, #control input.focus');
+  const filters = document.querySelectorAll('#control select.focus, #control input.focus');
+  const search = document.querySelector('input[type="search"]');
   const tasks = taskView.selectAllTasks();
-  controls.forEach(e => {
+  filters.forEach(e => {
     e.classList.remove('focus');
     e.value = 'none';
   });
   tasks.forEach(e => e.style.display = 'flex');
+  search.value = '';
 }
 
 export default {setListeners, resetFilters}

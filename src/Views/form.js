@@ -1,8 +1,8 @@
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import dateController from "../Controllers/date-controller";
-import formController from "../Controllers/form-controller";
-import taskController from "../Controllers/task-controller";
+import dateController from "../Controllers/date";
+import formController from "../Controllers/form";
+import taskController from "../Controllers/task";
 
 function setListeners() {
   // event listeners for every form input
@@ -118,6 +118,9 @@ function renderEditForm(id) {
   blur.style.display = 'flex';
   rootnode.style.display = 'flex';
   description.value = task.description;
+  if (description.value !== '') {
+    rootnode.querySelector('.desc-label').classList.add('focus');
+  }
   if (task.dueDate === '') {
     date.value = '';
   } else {

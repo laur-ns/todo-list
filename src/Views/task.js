@@ -1,6 +1,6 @@
-import formController from "../Controllers/form-controller";
-import taskController from "../Controllers/task-controller";
-import formView from "./form-view";
+import formController from "../Controllers/form";
+import taskController from "../Controllers/task";
+import formView from "./form";
 
 /* task element that will be cloned to create new tasks */
 const taskTemplate = document.createElement('div');

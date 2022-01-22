@@ -1,5 +1,5 @@
-import mainController from "../Controllers/main-controller";
-import projectController from "../Controllers/project-controller";
+import mainController from "../Controllers/main";
+import projectController from "../Controllers/project";
 
 const projectView = (() => {
   function renderProject(pName) {

@@ -1,10 +1,10 @@
 import { add } from "date-fns";
 import parseISO from "date-fns/parseISO";
-import dateController from "../Controllers/date-controller";
-import mainController from "../Controllers/main-controller";
-import projectController from "../Controllers/project-controller";
-import formView from "./form-view";
-import projectView from "./project-view";
+import dateController from "../Controllers/date";
+import mainController from "../Controllers/main";
+import projectController from "../Controllers/project";
+import formView from "./form";
+import projectView from "./project";
 
 const mainView = (() => {
 function renderCompleteCount(count) {

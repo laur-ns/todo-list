@@ -1,4 +1,4 @@
-const taskList = [];
+let taskList = [];
 
 // demo tasks
 taskList[0] = {
@@ -37,6 +37,42 @@ taskList[3] = {
   id: 645,
   priority: 'medium',
 }
+taskList[4] = {
+  name: 'do dishes',
+  description: '',
+  isComplete: true,
+  project: 'other',
+  dueDate: '2022-01-26',
+  id: 12344132,
+  priority: 'low',
+}
+taskList[5] = {
+  name: 'eat',
+  description: '',
+  isComplete: false,
+  project: 'other',
+  dueDate: '2022-01-26',
+  id: 3456435,
+  priority: 'low',
+}
+taskList[6] = {
+  name: 'sleep',
+  description: '',
+  isComplete: false,
+  project: 'other',
+  dueDate: '2022-01-26',
+  id: 2343,
+  priority: 'low',
+}
+taskList[7] = {
+  name: 'asdfasdfasfasdf',
+  description: '',
+  isComplete: false,
+  project: 'other',
+  dueDate: '2022-01-26',
+  id: 8675,
+  priority: 'low',
+}
 
 const TaskFactory = (obj) => {
   return {
@@ -50,4 +86,10 @@ const TaskFactory = (obj) => {
   }
 }
 
-export {taskList, TaskFactory};
+const getStorageTasks = () => {
+  if (localStorage.getItem("tasks") === null) { return; }
+  taskList = JSON.parse(localStorage.getItem("tasks"));
+}
+
+
+export {taskList, TaskFactory, getStorageTasks};

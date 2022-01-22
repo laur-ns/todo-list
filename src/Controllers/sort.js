@@ -1,7 +1,7 @@
 import { compareDesc, compareAsc, parseISO } from "date-fns";
-import { taskList } from "../Models/task-model";
-import taskView from "../Views/task-view";
-import taskController from "./task-controller";
+import { taskList } from "../Models/task";
+import taskView from "../Views/task";
+import taskController from "./task";
 import controls from "../Views/controls";
 
 let orderedNodes = [];

@@ -1,4 +1,4 @@
-import taskView from "../Views/task-view";
+import taskView from "../Views/task";
 
 export default function searchTasks(node) {
   const tasks = taskView.selectAllTasks();

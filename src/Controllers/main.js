@@ -1,7 +1,7 @@
-import mainView from "../Views/main-view";
-import taskView from "../Views/task-view";
-import { taskList } from "../Models/task-model";
-import taskController from "./task-controller";
+import mainView from "../Views/main";
+import taskView from "../Views/task";
+import { taskList } from "../Models/task";
+import taskController from "./task";
 import controls from "../Views/controls";
 
 const mainController = (() => {

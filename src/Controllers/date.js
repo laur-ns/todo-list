@@ -1,8 +1,8 @@
 import format from "date-fns/format";
 import { compareAsc, parseISO } from "date-fns";
-import { taskList } from "../Models/task-model";
-import taskView from "../Views/task-view";
-import mainView from "../Views/main-view";
+import { taskList } from "../Models/task";
+import taskView from "../Views/task";
+import mainView from "../Views/main";
 
 const dateController = (() => {
   function setHeaderDate() {

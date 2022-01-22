@@ -1,9 +1,9 @@
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import formView from "../Views/form-view";
-import mainController from "./main-controller";
-import projectController from "./project-controller";
-import taskController from "./task-controller";
+import formView from "../Views/form";
+import mainController from "./main";
+import projectController from "./project";
+import taskController from "./task";
 
 const formController = (() => {
   function setCssVariables(formType) {

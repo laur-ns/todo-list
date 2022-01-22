@@ -200,7 +200,9 @@ label.addproj-label:hover {
 #task-list {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 60vh;
+  min-height: 52vh;
+  max-height: 52vh;
+  margin-bottom: 2.5rem;
   overflow-y: scroll;
   gap: 5px;
 }
