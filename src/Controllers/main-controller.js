@@ -2,9 +2,11 @@ import mainView from "../Views/main-view";
 import taskView from "../Views/task-view";
 import { taskList } from "../Models/task-model";
 import taskController from "./task-controller";
+import controls from "../Views/controls";
 
 const mainController = (() => {
   function showAllTasks(project) {
+    controls.resetFilters();
     taskView.hideAllTasks();
     taskView.showAddButton();
     let tasksToRender = [];

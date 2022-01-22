@@ -57,6 +57,7 @@ const taskView = (() => {
     const dueDate = newTask.querySelector('.due-date');
     const prio = newTask.querySelector('.priority');
     const label = newTask.querySelector('label.checkbox');
+    newTask.classList.add(`${task.priority}`);
     newTask.setAttribute('id', `${task.id}`)
     prio.textContent += `${task.priority}`;
     dueDate.textContent = formController.formatDate(task.dueDate);
@@ -65,13 +66,13 @@ const taskView = (() => {
       prio.textContent = '';
     }
     if (!task.isComplete) {
-      newTask.classList.add(`${task.priority}`);
       const addTask = document.getElementById('add-task');
       const container = document.querySelector('#task-list');
       taskName.textContent = task.name;
       container.insertBefore(newTask, addTask);
       setListeners(newTask);
     } else {
+      newTask.classList.add(`complete`);
       const strike = document.createElement('strike');
       const container = document.querySelector('#completed-dropdown');
       const checkbox = newTask.querySelector('input');
@@ -109,6 +110,10 @@ const taskView = (() => {
     button.style.display = 'flex';
   }
 
+  function selectAllTasks() {
+    return document.querySelectorAll('.task-container:not(#add-task)')
+  }
+
   return {
     setListeners,
     renderTask,
@@ -116,6 +121,7 @@ const taskView = (() => {
     hideAllTasks,
     hideAddButton,
     showAddButton,
+    selectAllTasks,
   }
 })();
 

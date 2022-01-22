@@ -7,7 +7,6 @@ const taskController = (() => {
   function create(obj) {
     let index = (taskList.push(TaskFactory(obj))) - 1;
     projectController.addTask(index, taskList[index].project);
-    console.log(taskList[index]);
   }
 
   function remove(id) {

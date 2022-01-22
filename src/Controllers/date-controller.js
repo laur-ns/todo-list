@@ -1,5 +1,5 @@
 import format from "date-fns/format";
-import { compareAsc, compareDesc, parseISO } from "date-fns";
+import { compareAsc, parseISO } from "date-fns";
 import { taskList } from "../Models/task-model";
 import taskView from "../Views/task-view";
 import mainView from "../Views/main-view";
@@ -40,8 +40,8 @@ const dateController = (() => {
     let completeCount = 0;
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].dueDate === '') { continue; }
-      if ((compareAsc(taskList[i].dueDate, date1) !== -1) &&
-          (compareAsc(taskList[i].dueDate, date2) !==  1)) {
+      if ((compareAsc(parseISO(taskList[i].dueDate), date1) !== -1) &&
+          (compareAsc(parseISO(taskList[i].dueDate), date2) !==  1)) {
         if (taskList[i].isComplete) { completeCount++; }
         taskView.renderTask(taskList[i]);
       }

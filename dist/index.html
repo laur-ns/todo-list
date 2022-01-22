@@ -43,14 +43,38 @@
         <h4></h4>
       </div>
 
+      <div id='control-wrapper'>
+        <div id='control'>
+          <input type='search' placeholder='Search' class=''>
+          <div id='filters'>
+            <select class='' id='filter-prio'>
+              <option value="none">Filter:</option>
+              <option value="high">high priority</option>
+              <option value="medium">medium priority</option>
+              <option value="low">low priority</option>
+            </select>
+            <select class='' id='sort-date'>
+              <option value="none">Sort by date:</option>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div id='task-list'>
-<div class="task-container border HIGH" id="123412342">
-  <label class="checkbox">
-    <input type="checkbox" class="checkbox-hidden">
-    <div class="checkbox-replacement"></div>
-    <p>finish back end</p><span class='priority'>● HIGH</span>
-    </label>
-    <div class="options-container"><span class="due-date"></span><img class="modify-icon" src="./assets/modify-outline.svg"><img class="trash-icon" src="./assets/trash-outline.svg"></div></div>
+        <div class="task-container border HIGH" id="123412342">
+          <label class="checkbox">
+            <input type="checkbox" class="checkbox-hidden">
+            <div class="checkbox-replacement"></div>
+            <p>finish back end</p><span class='priority'>● HIGH</span>
+          </label>
+          <div class="options-container">
+            <span class="due-date"></span>
+            <img class="modify-icon" src="./assets/modify-outline.svg">
+            <img class="trash-icon" src="./assets/trash-outline.svg">
+          </div>
+        </div>
         <div class='task-container border' id='add-task'>
           <img src='./assets/add-circle.svg' class='add-icon'>
         </div>

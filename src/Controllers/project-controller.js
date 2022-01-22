@@ -1,5 +1,5 @@
-import projectList from '../Models/project-model';
 import projectView from '../Views/project-view';
+import {projectList, ProjectFactory} from '../Models/project-model';
 
 let currentProject = undefined;
 const projectController = (() => {
@@ -13,7 +13,8 @@ const projectController = (() => {
       }
     });
     if (badName) { return };
-    projectList.push({ name: pName, tasks: [] });
+    const newProject = {name: pName,}
+    projectList.push(ProjectFactory(newProject));
     projectView.renderProject(pName);
     return pName;
   }
