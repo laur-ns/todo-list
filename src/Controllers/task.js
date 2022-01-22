@@ -46,6 +46,7 @@ const taskController = (() => {
     taskView.hideTask(id);
     taskView.renderTask(taskList[index])
     mainView.renderCompleteCount(getCompletedCount());
+    localStorage.setItem("tasks", JSON.stringify(taskList));
   }
 
   function getTaskById(id) {
@@ -58,6 +59,7 @@ const taskController = (() => {
     taskList[i].description = obj.description;
     taskList[i].dueDate = obj.dueDate;
     taskList[i].priority = obj.priority;
+    localStorage.setItem("tasks", JSON.stringify(taskList))
   }
 
   return {
