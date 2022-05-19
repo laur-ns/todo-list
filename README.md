@@ -1,6 +1,6 @@
 # todo-list
 
-[Live Demo](https://laur-ns.github.io/todo-list/dist)
+## [Live Demo](https://laur-ns.github.io/todo-list/dist)
 
 A simple todo-list using Web Storage API to store data.
 
